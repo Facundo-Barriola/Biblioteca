@@ -17,7 +17,7 @@ public partial class BibliotecaContext : DbContext
 
     public virtual DbSet<Estante> Estantes { get; set; }
 
-    public virtual DbSet<Estanterium> Estanteria { get; set; }
+    public virtual DbSet<Estanteria> Estanteria { get; set; }
 
     public virtual DbSet<InformacionLibro> InformacionLibros { get; set; }
 
@@ -64,7 +64,7 @@ public partial class BibliotecaContext : DbContext
                 .HasConstraintName("FK_IdEstanteria");
         });
 
-        modelBuilder.Entity<Estanterium>(entity =>
+        modelBuilder.Entity<Estanteria>(entity =>
         {
             entity.HasKey(e => e.IdEstanteria).HasName("PK__estanter__A1D9749C4910135A");
 
