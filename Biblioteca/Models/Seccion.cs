@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Models;
 
-public partial class Seccion
+public class Seccion
 {
     public int IdSeccion { get; set; }
 
@@ -11,7 +11,7 @@ public partial class Seccion
 
     public int IdEstante { get; set; }
 
-    public virtual Estante IdEstanteNavigation { get; set; } = null!;
+    public Estante IdEstanteNavigation { get; set; } = null!;
 
-    public virtual ICollection<Libro> Libros { get; set; } = new List<Libro>();
+    public ICollection<Libro> Libros { get; set; } = new List<Libro>();
 }

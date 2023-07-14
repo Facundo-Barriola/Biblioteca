@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Models;
 
-public partial class Usuario
+public class Usuario
 {
     public string Dni { get; set; } = null!;
 
@@ -21,5 +21,5 @@ public partial class Usuario
 
     public bool? Tipo { get; set; }
 
-    public virtual ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
+    public ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
 }

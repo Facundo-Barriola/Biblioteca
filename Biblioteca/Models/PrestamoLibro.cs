@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Models;
 
-public partial class PrestamoLibro
+public class PrestamoLibro
 {
     public int IdPrestamoLibro { get; set; }
 
@@ -11,7 +11,7 @@ public partial class PrestamoLibro
 
     public int IdLibro { get; set; }
 
-    public virtual Libro IdLibroNavigation { get; set; } = null!;
+    public Libro IdLibroNavigation { get; set; } = null!;
 
-    public virtual Prestamo IdPrestamoNavigation { get; set; } = null!;
+    public Prestamo IdPrestamoNavigation { get; set; } = null!;
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Models;
 
-public partial class UsuariosDemorado
+public class UsuariosDemorado
 {
     public string Nombre { get; set; } = null!;
 
