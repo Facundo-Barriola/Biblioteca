@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Models;
 
-public partial class Estanteria
+public class Estanteria
 {
     public int IdEstanteria { get; set; }
 
