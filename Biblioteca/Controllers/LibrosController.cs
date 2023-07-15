@@ -1,4 +1,4 @@
-﻿using Biblioteca.Models;
+﻿using Biblioteca.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.Controllers
@@ -7,10 +7,18 @@ namespace Biblioteca.Controllers
     [Route("api/libros")]
     public class LibrosController
     {
-        //[HttpGet]
-        //public async Task<ActionResult<List<Libro>>> Get() 
-        //{
-            
-        //}
+        private readonly ILibroService _libroService;
+        public LibrosController(ILibroService libroService) 
+        {
+            _libroService = libroService;
+        }
+
+        [HttpGet]
+        public IActionResult GetAll() 
+        {
+            var libros = _libroService.GetAllLibros();
+            return Ok(libros);
+        }
+        
     }
 }
