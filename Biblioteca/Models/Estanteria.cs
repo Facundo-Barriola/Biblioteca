@@ -14,4 +14,21 @@ public class Estanteria
     public ICollection<Estante> Estantes { get; set; } = new List<Estante>();
 
     public Salon IdSalonNavigation { get; set; } = null!;
+
+    public Estanteria(int idEstanteria, string descripcionEstanteria, int idSalon)
+    {
+        IdEstanteria = idEstanteria;
+        DescripcionEstanteria = descripcionEstanteria;
+        IdSalon = idSalon;
+    }
+
+    public void UpdateIdEstanteria(int newIdSalon)
+    {
+        IdEstanteria = newIdEstanteria;
+    }
+
+    public void UpdateDescripcionEstanteria(string newDescripcionEstanteria)
+    {
+        DescripcionEstanteria = newDescripcionEstanteria;
+    }
 }
