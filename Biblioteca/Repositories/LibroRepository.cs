@@ -1,5 +1,6 @@
 ﻿using Biblioteca.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Biblioteca.Repositories
 {
@@ -33,10 +34,14 @@ namespace Biblioteca.Repositories
         public IEnumerable<Libro> GetLibroBySeccion(int id_seccion)
         {
             Seccion seccion = _bibliotecaContext.Seccions.Find(id_seccion);
+            var libroEnSeccion = _bibliotecaContext.Libros.Where(l => l.IdSeccion == id_seccion);
             if (seccion != null) 
             {
-                // Debe retornat una lista de libros según la sección que se pase por parámetro
-                return _bibliotecaContext.Libros.ToList();//.Where(id_seccion); 
+                foreach (var libro in libroEnSeccion) 
+                {
+                    return _bibliotecaContext.Libros.ToList();
+                }
+                 
             }
             return Enumerable.Empty<Libro>();
         }
