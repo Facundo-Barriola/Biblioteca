@@ -8,6 +8,6 @@ namespace Biblioteca.Repositories
         void Create(Libro libro);
         void Update(Libro libro);
         void Delete(int id);
-        IEnumerable<Libro> GetLibroByEstante(int id_estante);
+        IEnumerable<Libro> GetLibroBySeccion(int id_seccion);
     }
 }

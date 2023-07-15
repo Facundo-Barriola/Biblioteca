@@ -1,32 +1,49 @@
 ﻿using Biblioteca.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Repositories
 {
     public class LibroRepository : ILibroRepository
     {
+        private BibliotecaContext _bibliotecaContext;
+
+        public LibroRepository(BibliotecaContext context)
+        {
+            _bibliotecaContext = context;
+        }
         public void Create(Libro libro)
         {
-            throw new NotImplementedException();
+            _bibliotecaContext.Libros.Add(libro);
         }
 
-        public void Delete(int id)
+        public void Delete(int libroId)
         {
-            throw new NotImplementedException();
+            Libro libro = _bibliotecaContext.Libros.Find(libroId);
+            if (libro != null) 
+            {
+                _bibliotecaContext.Libros.Remove(libro);
+            }
         }
 
         public IEnumerable<Libro> GetAll()
         {
-            throw new NotImplementedException();
+            return _bibliotecaContext.Libros.ToList();
         }
 
-        public IEnumerable<Libro> GetLibroByEstante(int id_estante)
+        public IEnumerable<Libro> GetLibroBySeccion(int id_seccion)
         {
-            throw new NotImplementedException();
+            Seccion seccion = _bibliotecaContext.Seccions.Find(id_seccion);
+            if (seccion != null) 
+            {
+                // Debe retornat una lista de libros según la sección que se pase por parámetro
+                return _bibliotecaContext.Libros.ToList();//.Where(id_seccion); 
+            }
+            return Enumerable.Empty<Libro>();
         }
 
         public void Update(Libro libro)
         {
-            throw new NotImplementedException();
+            _bibliotecaContext.Entry(libro).State = EntityState.Modified;
         }
     }
 }
