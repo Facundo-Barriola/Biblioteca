@@ -22,7 +22,7 @@ public class Estanteria
         IdSalon = idSalon;
     }
 
-    public void UpdateIdEstanteria(int newIdSalon)
+    public void UpdateIdEstanteria(int newIdEstanteria)
     {
         IdEstanteria = newIdEstanteria;
     }
