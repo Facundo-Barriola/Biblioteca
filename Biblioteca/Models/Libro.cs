@@ -20,7 +20,7 @@ public class Libro
 
     public int IdSeccion { get; set; }
 
-    //public Seccion IdSeccionNavigation { get; set; } = null!;
+    public Seccion IdSeccionNavigation { get; set; } = null!;
 
     public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
 
