@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Services
 {
-    public class EstanteService : IEstanteService
+    public class EstanteService
     {
-        private readonly IEstanteRepository _estanteRepository;
+        private IEstanteRepository _estanteRepository;
 
         public EstanteService(IEstanteRepository estanteRepository)
         {
             _estanteRepository = estanteRepository;
         }
 
-        public IEnumerable<Estante> GetAllEstantes()
+        public List<Estante> GetAllEstantes()
         {
             return _estanteRepository.GetAll();
         }
@@ -23,13 +23,15 @@ namespace Biblioteca.Services
             return _estanteRepository.GetById(id);
         }
 
-        public void AddEstante(Estante estante)
+        public void AddEstante(int idEstante, string descripcionEstante, int idEstanteria)
         {
+            Estante estante = new Estante(idEstante, descripcionEstante, idEstanteria);
             _estanteRepository.Add(estante);
         }
 
-        public void UpdateEstante(Estante estante)
+        public void UpdateEstante(int idEstante, string descripcionEstante, int idEstanteria)
         {
+            Estante estante = new Estante(idEstante, descripcionEstante, idEstanteria);
             _estanteRepository.Update(estante);
         }
 
@@ -41,14 +43,5 @@ namespace Biblioteca.Services
                 _estanteRepository.Delete(estante);
             }
         }
-    }
-
-    public interface IEstanteService
-    {
-        IEnumerable<Estante> GetAllEstantes();
-        Estante GetEstanteById(int id);
-        void AddEstante(Estante estante);
-        void UpdateEstante(Estante estante);
-        void DeleteEstante(int id);
     }
 }

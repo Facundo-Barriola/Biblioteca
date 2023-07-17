@@ -7,7 +7,7 @@ namespace Biblioteca.Repositories
 {
     public class EstanteRepository : IEstanteRepository
     {
-        private readonly BibliotecaContext _context;
+        private BibliotecaContext _context;
 
         public EstanteRepository(BibliotecaContext context)
         {
@@ -49,14 +49,5 @@ namespace Biblioteca.Repositories
             _context.Estantes.Remove(estante);
             _context.SaveChanges();
         }
-    }
-
-    public interface IEstanteRepository
-    {
-        Estante GetById(int id);
-        IEnumerable<Estante> GetAll();
-        void Add(Estante estante);
-        void Update(Estante estante);
-        void Delete(Estante estante);
     }
 }
