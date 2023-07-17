@@ -6,7 +6,7 @@ namespace Biblioteca.Services
     {
         List<Libro> GetAllLibros();
 
-        void AnidirLibro(Libro libro);
+        void AniadirLibro(Libro libro);
         void BorrarLibro(int idLibro);
     }
 }
