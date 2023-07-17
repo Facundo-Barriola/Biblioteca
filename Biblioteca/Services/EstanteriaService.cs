@@ -32,7 +32,7 @@ namespace Biblioteca.Services
         public void UpdateEstanteria(int idEstanteria, string descripcionEstanteria, int idSalon)
         {
             Estanteria estanteria = new Estanteria(idEstanteria, descripcionEstanteria, idSalon);
-            _estanteriaRepository.Add(estanteria);
+            _estanteriaRepository.Update(estanteria);
         }
 
         public void DeleteEstanteria(int id)
