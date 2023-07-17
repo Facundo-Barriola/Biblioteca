@@ -7,8 +7,8 @@ namespace Biblioteca.Controllers
     [Route("api/libros")]
     public class LibrosController : ControllerBase
     {
-        private readonly ILibroService _libroService;
-        public LibrosController(ILibroService libroService) 
+        private LibroService _libroService;
+        public LibrosController(LibroService libroService) 
         {
             _libroService = libroService;
         }
@@ -17,7 +17,7 @@ namespace Biblioteca.Controllers
         public IActionResult GetAll() 
         {
             var libros = _libroService.GetAllLibros();
-            return new JsonResult(libros) { StatusCode = 200 };
+            return Ok(libros);
         }
         
     }

@@ -4,10 +4,10 @@ namespace Biblioteca.Repositories
 {
     public interface ILibroRepository
     {
-        IEnumerable<Libro> GetAll();
-        void Create(Libro libro);
-        void Update(Libro libro);
-        void Delete(int id);
-        IEnumerable<Libro> GetLibroBySeccion(int id_seccion);
+        List<Libro> GetAll();
+        void Aniadir(Libro libro);
+        void Editar(Libro libro);
+        void Borrar(int id);
+        List<Libro> GetLibroBySeccion(int id_seccion);
     }
 }

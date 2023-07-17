@@ -4,9 +4,9 @@ namespace Biblioteca.Services
 {
     public interface ILibroService
     {
-        IEnumerable<Libro> GetAllLibros();
+        List<Libro> GetAllLibros();
 
-        void CreateLibro(Libro libro);
-        void DeleteLibro(int idLibro);
+        void AnidirLibro(Libro libro);
+        void BorrarLibro(int idLibro);
     }
 }
