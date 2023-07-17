@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Services
 {
-    public class SeccionService : ISeccionService
+    public class SeccionService
     {
-        private readonly ISeccionRepository _seccionRepository;
+        private ISeccionRepository _seccionRepository;
 
         public SeccionService(ISeccionRepository seccionRepository)
         {
             _seccionRepository = seccionRepository;
         }
 
-        public IEnumerable<Seccion> GetAllSecciones()
+        public List<Seccion> GetAllSecciones()
         {
             return _seccionRepository.GetAll();
         }
@@ -23,13 +23,15 @@ namespace Biblioteca.Services
             return _seccionRepository.GetById(id);
         }
 
-        public void AddSeccion(Seccion seccion)
+        public void AddSeccion(int idSeccion, string descripcionSeccion, int idEstante)
         {
+            Seccion seccion = new Seccion(idSeccion, descripcionSeccion, idEstante);
             _seccionRepository.Add(seccion);
         }
 
-        public void UpdateSeccion(Seccion seccion)
+        public void UpdateSeccion(int idSeccion, string descripcionSeccion, int idEstante)
         {
+            Seccion seccion = new Seccion(idSeccion, descripcionSeccion, idEstante);
             _seccionRepository.Update(seccion);
         }
 
@@ -42,13 +44,3 @@ namespace Biblioteca.Services
             }
         }
     }
-
-    public interface ISeccionService
-    {
-        IEnumerable<Seccion> GetAllSecciones();
-        Seccion GetSeccionById(int id);
-        void AddSeccion(Seccion seccion);
-        void UpdateSeccion(Seccion seccion);
-        void DeleteSeccion(int id);
-    }
-}

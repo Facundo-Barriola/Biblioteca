@@ -7,18 +7,20 @@ namespace Biblioteca.Repositories
 {
     public class SeccionRepository : ISeccionRepository
     {
-        private readonly BibliotecaContext _context;
+        private BibliotecaContext _context;
 
         public SeccionRepository(BibliotecaContext context)
         {
             _context = context;
         }
 
+
+
         /// GetById y GetAll con sintáxis similar a SQL implementado con LINQ
         /// SaveChanges es un método que no se declara en BibliotecaContext porque ya viene incluído con Entity Framework Core.
 
         ///Incluir a "Libros" permite que al obtener una Sección, también se lean los libros asociados.
-        
+
         public Seccion GetById(int id)
         {
             return _context.Seccions
@@ -51,13 +53,4 @@ namespace Biblioteca.Repositories
             _context.SaveChanges();
         }
     }
-
-    public interface ISeccionRepository
-    {
-        Seccion GetById(int id);
-        IEnumerable<Seccion> GetAll();
-        void Add(Seccion seccion);
-        void Update(Seccion seccion);
-        void Delete(Seccion seccion);
-    }
-}
+}    
