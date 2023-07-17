@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Services
 {
-    public class EstanteriaService : IEstanteriaService
+    public class EstanteriaService
     {
-        private readonly IEstanteriaRepository _estanteriaRepository;
+        private IEstanteriaRepository _estanteriaRepository;
 
         public EstanteriaService(IEstanteriaRepository estanteriaRepository)
         {
             _estanteriaRepository = estanteriaRepository;
         }
 
-        public IEnumerable<Estanteria> GetAllEstanterias()
+        public List<Estanteria> GetAllEstanterias()
         {
             return _estanteriaRepository.GetAll();
         }
@@ -23,14 +23,16 @@ namespace Biblioteca.Services
             return _estanteriaRepository.GetById(id);
         }
 
-        public void AddEstanteria(Estanteria estanteria)
+        public void AddEstanteria(int idEstanteria, string descripcionEstanteria, int idSalon)
         {
+            Estanteria estanteria = new Estanteria(idEstanteria, descripcionEstanteria, idSalon);
             _estanteriaRepository.Add(estanteria);
         }
 
-        public void UpdateEstanteria(Estanteria estanteria)
+        public void UpdateEstanteria(int idEstanteria, string descripcionEstanteria, int idSalon)
         {
-            _estanteriaRepository.Update(estanteria);
+            Estanteria estanteria = new Estanteria(idEstanteria, descripcionEstanteria, idSalon);
+            _estanteriaRepository.Add(estanteria);
         }
 
         public void DeleteEstanteria(int id)
@@ -41,14 +43,5 @@ namespace Biblioteca.Services
                 _estanteriaRepository.Delete(estanteria);
             }
         }
-    }
-
-    public interface IEstanteriaService
-    {
-        IEnumerable<Estanteria> GetAllEstanterias();
-        Estanteria GetEstanteriaById(int id);
-        void AddEstanteria(Estanteria estanteria);
-        void UpdateEstanteria(Estanteria estanteria);
-        void DeleteEstanteria(int id);
     }
 }
