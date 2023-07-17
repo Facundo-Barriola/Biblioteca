@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace Biblioteca.Services
 {
-    public class SalonService : ISalonService
+    public class SalonService
     {
-        private readonly ISalonRepository _salonRepository;
+        private ISalonRepository _salonRepository;
 
         public SalonService(ISalonRepository salonRepository)
         {
             _salonRepository = salonRepository;
         }
 
-        public IEnumerable<Salon> GetAllSalones()
+        public List<Salon> GetAllSalones()
         {
             return _salonRepository.GetAll();
         }
@@ -23,13 +23,15 @@ namespace Biblioteca.Services
             return _salonRepository.GetById(id);
         }
 
-        public void AddSalon(Salon salon)
+        public void AddSalon(int idSalon, string descripcionSalon)
         {
+            Salon salon = new Salon(idSalon, descripcionSalon);
             _salonRepository.Add(salon);
         }
 
-        public void UpdateSalon(Salon salon)
+        public void UpdateSalon(int idSalon, string descripcionSalon)
         {
+            Salon salon = new Salon(idSalon, descripcionSalon);
             _salonRepository.Update(salon);
         }
 
@@ -41,14 +43,5 @@ namespace Biblioteca.Services
                 _salonRepository.Delete(salon);
             }
         }
-    }
-
-    public interface ISalonService
-    {
-        IEnumerable<Salon> GetAllSalones();
-        Salon GetSalonById(int id);
-        void AddSalon(Salon salon);
-        void UpdateSalon(Salon salon);
-        void DeleteSalon(int id);
     }
 }

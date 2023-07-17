@@ -7,7 +7,7 @@ namespace Biblioteca.Repositories
 {
     public class SalonRepository : ISalonRepository
     {
-        private readonly BibliotecaContext _context;
+        private BibliotecaContext _context;
 
         public SalonRepository(BibliotecaContext context)
         {
@@ -46,14 +46,5 @@ namespace Biblioteca.Repositories
             _context.Salons.Remove(salon);
             _context.SaveChanges();
         }
-    }
-
-    public interface ISalonRepository
-    {
-        Salon GetById(int id);
-        IEnumerable<Salon> GetAll();
-        void Add(Salon salon);
-        void Update(Salon salon);
-        void Delete(Salon salon);
     }
 }
