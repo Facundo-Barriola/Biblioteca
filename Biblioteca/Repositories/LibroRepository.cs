@@ -1,5 +1,6 @@
 ﻿using Biblioteca.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using System.Linq;
 
 namespace Biblioteca.Repositories
@@ -20,9 +21,14 @@ namespace Biblioteca.Repositories
         public void Borrar(int libroId)
         {
             Libro libro = _bibliotecaContext.Libros.Find(libroId);
-            if (libro != null) 
+            if (libro != null)
             {
                 _bibliotecaContext.Libros.Remove(libro);
+                _bibliotecaContext.SaveChanges();
+            }
+            else 
+            {
+                throw new Exception("No se encontró el libro con el ID especificado");
             }
         }
 
