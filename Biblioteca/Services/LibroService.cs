@@ -5,25 +5,25 @@ namespace Biblioteca.Services
 {
     public class LibroService : ILibroService
     {
-        private ILibroRepository _libroRespository;
+        private ILibroRepository _libroRepository;
 
         public LibroService(ILibroRepository libroRepository) 
         {
-            _libroRespository = libroRepository;
+            _libroRepository = libroRepository;
         }
         public List<Libro> GetAllLibros()
         {
-            return _libroRespository.GetAll();
+            return _libroRepository.GetAll();
         }
 
         public void AniadirLibro(Libro libro) 
         {
-            _libroRespository.Aniadir(libro);
+            _libroRepository.Aniadir(libro);
         }
 
         public void BorrarLibro(int idLibro) 
         {
-            _libroRespository.Borrar(idLibro);
+            _libroRepository.Borrar(idLibro);
         }
     }
 }
