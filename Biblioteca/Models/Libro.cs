@@ -12,7 +12,7 @@ public class Libro
 
     public string Sinopsis { get; set; }
 
-    public int? PuntajeCritica { get; set; } = null!;
+    public int PuntajeCritica { get; set; }
 
     public int Estado { get; set; }
 
@@ -24,8 +24,8 @@ public class Libro
 
     public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
 
-
-    public Libro(int idLibro, string titulo, string sinopsis, int puntajeCritica,
+    public Libro() { }
+    /*public Libro(int idLibro, string titulo, string sinopsis, int puntajeCritica,
         int estado, bool disponibilidad, int idSeccion) 
     {
         IdLibro = idLibro;
@@ -35,7 +35,7 @@ public class Libro
         Estado = estado;
         Disponibilidad = disponibilidad;
         IdSeccion = idSeccion;
-    }
+    }*/
 
     public void UpdateTitulo(string newTitulo) 
     {
