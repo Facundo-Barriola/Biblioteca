@@ -19,6 +19,12 @@ namespace Biblioteca.Controllers
             var libros = _libroService.GetAllLibros();
             return Ok(libros);
         }
-        
+
+        [HttpDelete("/{id}")]
+        public IActionResult Borrar(int id) 
+        {
+            _libroService.BorrarLibro(id);
+            return Ok();
+        }
     }
 }
