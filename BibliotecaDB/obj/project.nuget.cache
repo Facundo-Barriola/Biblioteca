@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8RbaSvI8qO/DSyXNOmLleDSoJ+oM5/UTPiYdvnNiTJnZOVs2G6h4g8/b2iHqKbR8TlAwwvZHFJQw7qzpPpc3cw==",
+  "dgSpecHash": "Q9Ge1dEbIngeNyZ8kBVd462qzN8QKuLpkdajz9BNECdIrZQ5xS4T9DIj27wxoyaUrqC2Z6aFSGL1+cHR9YQicg==",
   "success": true,
   "projectFilePath": "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\BibliotecaDB\\BibliotecaDB.csproj",
   "expectedPackageFiles": [
@@ -59,6 +59,7 @@
     "C:\\Users\\facub\\.nuget\\packages\\system.resources.resourcemanager\\4.3.0\\system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "C:\\Users\\facub\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\facub\\.nuget\\packages\\system.runtime.caching\\5.0.0\\system.runtime.caching.5.0.0.nupkg.sha512",
+    "C:\\Users\\facub\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\facub\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\facub\\.nuget\\packages\\system.security.cryptography.cng\\5.0.0\\system.security.cryptography.cng.5.0.0.nupkg.sha512",
     "C:\\Users\\facub\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",

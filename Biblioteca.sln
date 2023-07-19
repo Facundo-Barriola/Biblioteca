@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca", "Biblioteca\Biblioteca.csproj", "{8D059E4D-E155-411F-9379-47DC7F3E90EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaDB", "BibliotecaDB\BibliotecaDB.csproj", "{D600D175-4D75-4A5B-8BE1-8D0325D79E20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaDB", "BibliotecaDB\BibliotecaDB.csproj", "{D600D175-4D75-4A5B-8BE1-8D0325D79E20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
