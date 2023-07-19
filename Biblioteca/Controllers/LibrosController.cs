@@ -1,4 +1,5 @@
-﻿using Biblioteca.Services;
+﻿using Biblioteca.Models;
+using Biblioteca.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.Controllers
@@ -25,6 +26,14 @@ namespace Biblioteca.Controllers
         {
             _libroService.BorrarLibro(id);
             return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult Insertar([FromBody]Libro libro) 
+        {
+            var nuevoLibro = _libroService.InsertarLibro(libro.IdLibro, libro.Titulo, libro.Sinopsis,
+                libro.PuntajeCritica, libro.Estado, libro.Disponibilidad, libro.IdSeccion);
+            return CreatedAtAction(nameof(Get), new {id = nuevoLibro.id});
         }
     }
 }

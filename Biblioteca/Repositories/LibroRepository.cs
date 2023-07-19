@@ -13,9 +13,20 @@ namespace Biblioteca.Repositories
         {
             _bibliotecaContext = context;
         }
-        public void Aniadir(Libro libro)
+        public Libro Insertar(Libro libro)
         {
+            var dbLibro = new Libro
+            {
+                IdLibro = libro.IdLibro,
+                Titulo = libro.Titulo,
+                Sinopsis = libro.Sinopsis,
+                PuntajeCritica = libro.PuntajeCritica,
+                Estado = libro.Estado,
+                Disponibilidad = libro.Disponibilidad,
+                IdSeccion = libro.IdSeccion
+            };
             _bibliotecaContext.Libros.Add(libro);
+            _bibliotecaContext.SaveChanges();
         }
 
         public void Borrar(int libroId)
@@ -50,6 +61,7 @@ namespace Biblioteca.Repositories
         public void Editar(Libro libro)
         {
             _bibliotecaContext.Entry(libro).State = EntityState.Modified;
+            _bibliotecaContext.SaveChanges();
         }
     }
 }

@@ -3,7 +3,7 @@ using Biblioteca.Repositories;
 
 namespace Biblioteca.Services
 {
-    public class LibroService : ILibroService
+    public class LibroService 
     {
         private ILibroRepository _libroRepository;
 
@@ -16,9 +16,12 @@ namespace Biblioteca.Services
             return _libroRepository.GetAll();
         }
 
-        public void AniadirLibro(Libro libro) 
-        {
-            _libroRepository.Aniadir(libro);
+        public Libro InsertarLibro(int id, string titulo, string sinopsis, int puntajeCritica,
+            int estado, bool disponibilidad, int idSeccion) 
+        {   
+            Libro libro = new Libro(id, titulo, sinopsis, puntajeCritica,
+                estado, disponibilidad, idSeccion);
+            return _libroRepository.Insertar(libro);
         }
 
         public void BorrarLibro(int idLibro) 

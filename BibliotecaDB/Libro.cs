@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
-namespace Biblioteca.Models;
+namespace BibliotecaDB;
 
 public class Libro
-{   
+{
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int IdLibro { get; set; }
 
     public string Titulo { get; set; }
@@ -19,6 +23,7 @@ public class Libro
     public bool Disponibilidad { get; set; }
 
     public int IdSeccion { get; set; }
+    [ForeignKey("IdSeccion")]
     public Seccion IdSeccionNavigation { get; set; } = null!;
     public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
 
