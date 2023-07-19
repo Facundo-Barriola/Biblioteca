@@ -34,6 +34,10 @@ public class Libro
         IdSeccion = idSeccion;
     }
 
+    public void EditarId(int id) 
+    {
+        IdLibro = id;
+    }
     public void UpdateTitulo(string newTitulo) 
     {
         Titulo = newTitulo;
