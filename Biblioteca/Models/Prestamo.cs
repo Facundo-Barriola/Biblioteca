@@ -31,6 +31,11 @@ public class Prestamo
         IdUsuario = idUsuario;
     }
 
+    public void UpdateIdPrestamo(int newIdPrestamo)
+    {
+        IdPrestamo = newIdPrestamo;
+    }
+
     public void UpdateFechaExtraccion(DateTime? newFechaExtraccion)
     {
         FechaExtraccion = newFechaExtraccion;
