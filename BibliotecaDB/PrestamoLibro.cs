@@ -13,11 +13,13 @@ namespace BibliotecaDB
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdPrestamoLibro { get; set; }
-        public int IdPrestamo { get; set; }
         [ForeignKey("IdPrestamo")]
-        public int IdLibro { get; set; }
+        public int IdPrestamo { get; set; }
+        
         [ForeignKey("IdLibro")]
-        public Libro IdLibroNavigation { get; set; } = null!;
-        public Prestamo IdPrestamoNavigation { get; set; } = null!;
+        public int IdLibro { get; set; }
+        
+        //public Libro IdLibroNavigation { get; set; } = null!;
+        //public Prestamo IdPrestamoNavigation { get; set; } = null!;
     }
 }

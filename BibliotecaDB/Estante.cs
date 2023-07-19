@@ -14,9 +14,9 @@ namespace BibliotecaDB
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IdEstante { get; set; }
         public string DescripcionEstante { get; set; } = null!;
-        public int IdEstanteria { get; set; }
         [ForeignKey("IdEstanteria")]
-        public Estanteria IdEstanteriaNavigation { get; set; } = null!;
-        public ICollection<Seccion> Seccions { get; set; } = new List<Seccion>();
+        public int IdEstanteria { get; set; }
+        //public Estanteria IdEstanteriaNavigation { get; set; } = null!;
+        public ICollection<Seccion> Secciones { get; set; } = new List<Seccion>();
     }
 }

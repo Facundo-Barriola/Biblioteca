@@ -17,7 +17,7 @@ public class Prestamo
 
     public string IdUsuario { get; set; } = null!;
 
-    public Usuario IdUsuarioNavigation { get; set; } = null!;
+    private Usuario IdUsuarioNavigation { get; set; } = null!;
 
-    public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
+    private ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
 }

@@ -19,8 +19,8 @@ public class Libro
     public bool Disponibilidad { get; set; }
 
     public int IdSeccion { get; set; }
-    public Seccion IdSeccionNavigation { get; set; } = null!;
-    public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
+    private Seccion IdSeccionNavigation { get; set; } = null!;
+    private ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
 
     public Libro(int idLibro, string titulo, string sinopsis, int puntajeCritica,
         int estado, bool disponibilidad, int idSeccion) 

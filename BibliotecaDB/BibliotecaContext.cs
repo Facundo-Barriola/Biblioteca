@@ -22,9 +22,11 @@ namespace BibliotecaDB
         public DbSet<Prestamo> Prestamos { get; set;}
         public DbSet<PrestamoLibro> PrestamoLibros { get;set; }
         public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<PrestamosDeLibro> PrestamosDeLibros { get; set; }
-        public DbSet<UsuarioDemorado> UsuariosDemorados { get; set; }
-        public DbSet<UbicacionLibro> UbicacionLibros { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        {
+            modelBuilder.Entity<Libro>().ToTable("Libro");
+        }
 
     }
 }

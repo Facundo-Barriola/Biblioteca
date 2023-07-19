@@ -15,11 +15,11 @@ namespace BibliotecaDB
         public int IdEstanteria { get; set; }
 
         public string DescripcionEstanteria { get; set; } = null!;
-
-        public int IdSalon { get; set; }
         [ForeignKey("IdSalon")]
+        public int IdSalon { get; set; }
+        
         public ICollection<Estante> Estantes { get; set; } = new List<Estante>();
 
-        public Salon IdSalonNavigation { get; set; } = null!;
+        //public Salon IdSalonNavigation { get; set; } = null!;
     }
 }

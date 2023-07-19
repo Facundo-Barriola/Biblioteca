@@ -22,9 +22,9 @@ namespace BibliotecaDB
 
         public bool Disponibilidad { get; set; }
 
-        public int IdSeccion { get; set; }
         [ForeignKey("IdSeccion")]
-        public Seccion IdSeccionNavigation { get; set; } = null!;
+        public int IdSeccion { get; set; }        
+        //public Seccion IdSeccionNavigation { get; set; } = null!;
         public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
 
         }
