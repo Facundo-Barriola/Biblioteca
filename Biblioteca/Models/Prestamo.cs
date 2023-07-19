@@ -20,4 +20,39 @@ public class Prestamo
     public Usuario IdUsuarioNavigation { get; set; } = null!;
 
     public ICollection<PrestamoLibro> PrestamoLibros { get; set; } = new List<PrestamoLibro>();
+
+    public Prestamo(int idPrestamo, DateTime? fechaExtraccion, DateTime fechaDevolucion, DateTime fechaPactada, bool? estadoPrestamo, string idUsuario)
+    {
+        IdPrestamo = idPrestamo;
+        FechaExtraccion = fechaExtraccion;
+        FechaDevolucion = fechaDevolucion;
+        FechaPactada = fechaPactada;
+        EstadoPrestamo = estadoPrestamo;
+        IdUsuario = idUsuario;
+    }
+
+    public void UpdateFechaExtraccion(DateTime? newFechaExtraccion)
+    {
+        FechaExtraccion = newFechaExtraccion;
+    }
+
+    public void UpdateFechaDevolucion(DateTime newFechaDevolucion)
+    {
+        FechaDevolucion = newFechaDevolucion;
+    }
+
+    public void UpdateFechaPactada(DateTime newFechaPactada)
+    {
+        FechaPactada = newFechaPactada;
+    }
+
+    public void UpdateEstadoPrestamo(bool? newEstadoPrestamo)
+    {
+        EstadoPrestamo = newEstadoPrestamo;
+    }
+
+    public void UpdateIdUsuario(string newIdUsuario)
+    {
+        IdUsuario = newIdUsuario;
+    }
 }
