@@ -28,5 +28,14 @@ namespace Biblioteca.Services
         {
             _libroRepository.Borrar(idLibro);
         }
+
+        public void EditarLibro(Libro libro) {
+            _libroRepository.Editar(libro);
+        }
+
+        public Libro BuscarLibroPorId(int idLibro) 
+        {
+            return _libroRepository.BuscarPorId(idLibro);
+        }
     }
 }

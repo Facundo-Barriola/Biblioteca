@@ -1,4 +1,4 @@
-﻿using Biblioteca.Models;
+﻿using BibliotecaDB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using System.Linq;
@@ -13,9 +13,11 @@ namespace Biblioteca.Repositories
         {
             _bibliotecaContext = context;
         }
-        public Libro Insertar(Libro libro)
+        public Models.Libro Insertar(Models.Libro libro)
         {
-            var dbLibro = new Libro
+            var modelLibro = new Models.Libro(libro.IdLibro, libro.Titulo, libro.Sinopsis, libro.PuntajeCritica,
+                libro.Estado, libro.Disponibilidad, libro.IdSeccion);
+            var dbLibro = new BibliotecaDB.Libro
             {
                 IdLibro = libro.IdLibro,
                 Titulo = libro.Titulo,
@@ -25,8 +27,10 @@ namespace Biblioteca.Repositories
                 Disponibilidad = libro.Disponibilidad,
                 IdSeccion = libro.IdSeccion
             };
-            _bibliotecaContext.Libros.Add(libro);
+            modelLibro.EditarId(dbLibro.IdLibro);
+            _bibliotecaContext.Libros.Add(dbLibro);
             _bibliotecaContext.SaveChanges();
+            return libro;
         }
 
         public void Borrar(int libroId)
@@ -43,25 +47,81 @@ namespace Biblioteca.Repositories
             }
         }
 
-        public List<Libro> GetAll()
+        public List<Models.Libro> GetAll()
         {
-            return _bibliotecaContext.Libros.ToList();
+            var dbLibros = _bibliotecaContext.Libros.ToList();
+            var modelLibros = new List<Models.Libro>();
+            foreach( var dbLibro in dbLibros) 
+            {
+                modelLibros.Add(new Models.Libro(
+                    dbLibro.IdLibro,
+                    dbLibro.Titulo,
+                    dbLibro.Sinopsis,
+                    dbLibro.PuntajeCritica,
+                    dbLibro.Estado,
+                    dbLibro.Disponibilidad,
+                    dbLibro.IdSeccion
+                    ));
+            }
+            return modelLibros;
         }
 
-         public List<Libro> GetLibroBySeccion(int id_seccion)
+        public List<Models.Libro> GetLibroBySeccion(int id_seccion)
         {
-            Seccion seccion = _bibliotecaContext.Seccions.Find(id_seccion);
-            if (seccion != null) 
-            {
-                return _bibliotecaContext.Libros.Where(l => l.IdSeccion == id_seccion).ToList();
+            var dbLibros = _bibliotecaContext.Libros.ToList();
+            var LibrosEnSeccion = new List<Models.Libro>();
+
+            foreach (var dbLibro in dbLibros)
+            { 
+                if(dbLibro.IdSeccion == id_seccion)
+                    LibrosEnSeccion.Add(new Models.Libro(
+                    dbLibro.IdLibro,
+                    dbLibro.Titulo,
+                    dbLibro.Sinopsis,
+                    dbLibro.PuntajeCritica,
+                    dbLibro.Estado,
+                    dbLibro.Disponibilidad,
+                    dbLibro.IdSeccion
+                    )
+                 );
             }
-            return new List<Libro>();
+            return LibrosEnSeccion;
         } 
 
-        public void Editar(Libro libro)
+        public void Editar(Models.Libro libro)
         {
-            _bibliotecaContext.Entry(libro).State = EntityState.Modified;
-            _bibliotecaContext.SaveChanges();
+            var dbLibro = _bibliotecaContext.Libros.FirstOrDefault(l => l.IdLibro == libro.IdLibro);
+            if (dbLibro != null) 
+            {
+                dbLibro.Titulo = libro.Titulo;
+                dbLibro.Sinopsis = libro.Sinopsis;
+                dbLibro.PuntajeCritica = libro.PuntajeCritica;
+                dbLibro.Estado = libro.Estado;
+                dbLibro.Disponibilidad = libro.Disponibilidad;
+                dbLibro.IdSeccion = libro.IdSeccion;
+
+                _bibliotecaContext.SaveChanges();
+            }          
+        }
+
+        public Models.Libro BuscarPorId(int idLibro) 
+        {
+            var dbLibro = _bibliotecaContext.Libros.FirstOrDefault(l => l.IdLibro == idLibro);
+            if (dbLibro != null) 
+            {
+                var libro = new Models.Libro
+                (
+                    dbLibro.IdLibro,
+                    dbLibro.Titulo,
+                    dbLibro.Sinopsis,
+                    dbLibro.PuntajeCritica,
+                    dbLibro.Estado,
+                    dbLibro.Disponibilidad,
+                    dbLibro.IdSeccion
+                );
+                return libro;
+            }
+            return null;
         }
     }
 }

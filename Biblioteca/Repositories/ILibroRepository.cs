@@ -9,5 +9,7 @@ namespace Biblioteca.Repositories
         void Editar(Libro libro);
         void Borrar(int id);
         List<Libro> GetLibroBySeccion(int id_seccion);
+
+        Libro BuscarPorId(int id);
     }
 }
