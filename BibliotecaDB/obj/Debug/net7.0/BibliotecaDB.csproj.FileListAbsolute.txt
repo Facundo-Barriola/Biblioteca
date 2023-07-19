@@ -1,0 +1,14 @@
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\bin\Debug\net7.0\BibliotecaDB.deps.json
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\bin\Debug\net7.0\BibliotecaDB.runtimeconfig.json
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\bin\Debug\net7.0\BibliotecaDB.dll
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\bin\Debug\net7.0\BibliotecaDB.pdb
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.csproj.AssemblyReference.cache
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.AssemblyInfoInputs.cache
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.AssemblyInfo.cs
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.csproj.CoreCompileInputs.cache
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.dll
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\refint\BibliotecaDB.dll
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.pdb
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\BibliotecaDB.genruntimeconfig.cache
+C:\Programación\C#\Biblioteca\Biblioteca\BibliotecaDB\obj\Debug\net7.0\ref\BibliotecaDB.dll

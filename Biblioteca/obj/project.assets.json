@@ -1242,6 +1242,19 @@
             "rid": "win"
           }
         }
+      },
+      "BibliotecaDB/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9"
+        },
+        "compile": {
+          "bin/placeholder/BibliotecaDB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BibliotecaDB.dll": {}
+        }
       }
     }
   },
@@ -3925,10 +3938,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BibliotecaDB/1.0.0": {
+      "type": "project",
+      "path": "../BibliotecaDB/BibliotecaDB.csproj",
+      "msbuildProject": "../BibliotecaDB/BibliotecaDB.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BibliotecaDB >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.9",
@@ -3962,7 +3981,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\BibliotecaDB\\BibliotecaDB.csproj": {
+              "projectPath": "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\BibliotecaDB\\BibliotecaDB.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

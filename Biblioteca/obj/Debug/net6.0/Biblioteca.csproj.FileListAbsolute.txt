@@ -85,3 +85,5 @@ C:\Programación\C#\Biblioteca\Biblioteca\Biblioteca\bin\Debug\net6.0\System.Mem
 C:\Programación\C#\Biblioteca\Biblioteca\Biblioteca\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 C:\Programación\C#\Biblioteca\Biblioteca\Biblioteca\bin\Debug\net6.0\System.Text.Json.dll
 C:\Programación\C#\Biblioteca\Biblioteca\Biblioteca\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Programación\C#\Biblioteca\Biblioteca\Biblioteca\bin\Debug\net6.0\BibliotecaDB.dll
+C:\Programación\C#\Biblioteca\Biblioteca\Biblioteca\bin\Debug\net6.0\BibliotecaDB.pdb

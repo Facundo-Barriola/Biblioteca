@@ -9,5 +9,5 @@ public class Salon
 
     public string DescripcionSalon { get; set; } = null!;
 
-    public ICollection<Estanteria> Estanteria { get; set; } = new List<Estanteria>();
+    private ICollection<Estanteria> Estanteria { get; set; } = new List<Estanteria>();
 }
