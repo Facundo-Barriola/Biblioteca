@@ -1,7 +1,7 @@
-using Biblioteca.Models;
 using Biblioteca.Repositories;
 using Biblioteca.Services;
 using Microsoft.EntityFrameworkCore;
+using BibliotecaDB;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<BibliotecaContext>(options => {
     options.
-    UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")); }) ;
+    UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")); });
 builder.Services.AddScoped< ILibroRepository,LibroRepository>();
 builder.Services.AddScoped<LibroService>();
 
