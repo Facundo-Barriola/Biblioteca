@@ -33,7 +33,28 @@ namespace Biblioteca.Controllers
         {
             var nuevoLibro = _libroService.InsertarLibro(libro.IdLibro, libro.Titulo, libro.Sinopsis,
                 libro.PuntajeCritica, libro.Estado, libro.Disponibilidad, libro.IdSeccion);
-            return CreatedAtAction(nameof(Get), new {id = nuevoLibro.id});
+            return Ok(nuevoLibro);//CreatedAtAction(nameof(), new {id = nuevoLibro.IdLibro});
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, [FromBody] Libro libroActualizado) 
+        {
+            var libroExistente = _libroService.BuscarLibroPorId(id);
+
+            if (libroExistente == null) 
+            {
+                return NotFound();
+            }
+            libroExistente.Titulo = libroActualizado.Titulo;
+            libroExistente.Sinopsis = libroActualizado.Sinopsis;
+            libroExistente.PuntajeCritica = libroActualizado.PuntajeCritica;
+            libroExistente.Estado = libroActualizado.Estado;
+            libroExistente.Disponibilidad = libroActualizado.Disponibilidad;
+            libroExistente.IdSeccion = libroActualizado.IdSeccion;
+
+            _libroService.EditarLibro(libroExistente);
+
+            return NoContent();
         }
     }
 }
