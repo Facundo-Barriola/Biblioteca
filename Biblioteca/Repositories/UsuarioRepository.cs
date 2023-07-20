@@ -1,4 +1,5 @@
 ﻿using BibliotecaDB;
+using System.Linq;
 
 namespace Biblioteca.Repositories
 {
@@ -13,12 +14,37 @@ namespace Biblioteca.Repositories
 
         public void Borrar(int idUsuario)
         {
-            throw new NotImplementedException();
+            Usuario usuario = _bibliotecaContext.Usuarios.Find(idUsuario);
+            if (usuario != null)
+            {
+                _bibliotecaContext.Usuarios.Remove(usuario);
+                _bibliotecaContext.SaveChanges();
+            }
+            else 
+            {
+                throw new Exception("No se encontró el libro con el ID especificado");
+            }
         }
 
         public Models.Usuario BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            Usuario dbUsuario = _bibliotecaContext.Usuarios.FirstOrDefault(u => u.IdUsuario == id);
+            if (dbUsuario != null) 
+            {
+                var usuario = new Models.Usuario(
+                    dbUsuario.IdUsuario,
+                    dbUsuario.Dni,
+                    dbUsuario.Nombre,
+                    dbUsuario.Apellido,
+                    dbUsuario.FechaNacimiento,
+                    dbUsuario.Telefono,
+                    dbUsuario.Mail,
+                    dbUsuario.Contrasena,
+                    dbUsuario.Tipo
+                    );
+                return usuario;
+            }
+            return null;
         }
 
         public Models.Usuario Editar(Models.Usuario usuario)

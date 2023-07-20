@@ -20,7 +20,7 @@ public class Usuario
 
     public string Contrasena { get; set; } = null!;
 
-    public bool? Tipo { get; set; }
+    public bool Tipo { get; set; }
 
     private ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
 

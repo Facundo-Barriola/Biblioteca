@@ -20,7 +20,7 @@ namespace BibliotecaDB
         public string Telefono { get; set; } = null!;
         public string Mail { get; set; } = null!;
         public string Contrasena { get; set; } = null!;
-        public bool? Tipo { get; set; }
+        public bool Tipo { get; set; }
         public ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
     }
 }
