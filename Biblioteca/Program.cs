@@ -17,6 +17,8 @@ builder.Services.AddDbContext<BibliotecaContext>(options => {
     UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")); });
 builder.Services.AddScoped< ILibroRepository,LibroRepository>();
 builder.Services.AddScoped<LibroService>();
+builder.Services.AddScoped<ISalonRepository, SalonRepository>();
+builder.Services.AddScoped<SalonService>();
 
 var app = builder.Build();
 
