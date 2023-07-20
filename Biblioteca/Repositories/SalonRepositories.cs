@@ -61,16 +61,28 @@ namespace Biblioteca.Repositories
             return salon;
         }
 
-        public void Update(Salon salon)
+        public Models.Salon Update(Models.Salon salon)
         {
-            _context.Salons.Update(salon);
-            _context.SaveChanges();
+            var dbSalon = _context.Salones.FirstOrDefault(s => s.IdSalon == salon.IdSalon);
+            if (dbSalon != null) 
+            {
+                dbSalon.IdSalon = salon.IdSalon;
+                dbSalon.DescripcionSalon = salon.DescripcionSalon;
+
+                _context.SaveChanges();
+                return salon;
+            }
+            return null;
         }
 
-        public void Delete(Salon salon)
+        public void Delete(Models.Salon salon)
         {
-            _context.Salons.Remove(salon);
-            _context.SaveChanges();
+            var dbSalon = _context.Salones.FirstOrDefault(s => s.IdSalon == salon.IdSalon);
+            if (dbSalon != null) 
+            {
+                _context.Salones.Remove(dbSalon); 
+                _context.SaveChanges();
+            }
         }
     }
 }
