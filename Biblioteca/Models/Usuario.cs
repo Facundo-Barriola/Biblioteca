@@ -37,4 +37,9 @@ public class Usuario
         Contrasena = contrasena;
         Tipo = tipo;
     }
+
+    public void EditarId(int idUsuario)
+    {
+        IdUsuario = idUsuario;
+    }
 }

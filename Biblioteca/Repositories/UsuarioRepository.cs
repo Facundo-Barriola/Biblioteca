@@ -49,17 +49,64 @@ namespace Biblioteca.Repositories
 
         public Models.Usuario Editar(Models.Usuario usuario)
         {
-            throw new NotImplementedException();
+            var dbUsuario = _bibliotecaContext.Usuarios.FirstOrDefault(u => u.IdUsuario == usuario.IdUsuario);
+            if (dbUsuario != null) 
+            {
+                dbUsuario.Dni = usuario.Dni;
+                dbUsuario.Nombre = usuario.Nombre;
+                dbUsuario.Apellido = usuario.Apellido;
+                dbUsuario.FechaNacimiento = usuario.FechaNacimiento;
+                dbUsuario.Telefono = usuario.Telefono;
+                dbUsuario.Mail = usuario.Mail;
+                dbUsuario.Contrasena = usuario.Contrasena;
+                dbUsuario.Tipo = usuario.Tipo;
+                _bibliotecaContext.SaveChanges();
+            }
+            return usuario;
         }
 
         public Models.Usuario Insertar(Models.Usuario usuario)
         {
-            throw new NotImplementedException();
+            var modelUsuario = new Models.Usuario(usuario.IdUsuario,usuario.Dni ,usuario.Nombre, 
+                usuario.Apellido, usuario.FechaNacimiento, usuario.Telefono, usuario.Mail,
+                usuario.Contrasena, usuario.Tipo);
+            var dbUsuario = new BibliotecaDB.Usuario 
+            {
+                Dni = usuario.Dni,
+                Nombre = usuario.Nombre,
+                Apellido = usuario.Apellido,
+                FechaNacimiento = usuario.FechaNacimiento,
+                Telefono = usuario.Telefono,
+                Mail = usuario.Mail,
+                Contrasena = usuario.Contrasena,
+                Tipo = usuario.Tipo
+            };
+            modelUsuario.EditarId(dbUsuario.IdUsuario);
+            _bibliotecaContext.Usuarios.Add(dbUsuario);
+            _bibliotecaContext.SaveChanges();
+            return usuario;
         }
 
         public List<Models.Usuario> TraerTodos()
         {
-            throw new NotImplementedException();
+            var dbUsuarios = _bibliotecaContext.Usuarios.ToList();
+            var modelUsuarios = new List<Models.Usuario>();
+            foreach (var dbUsuario in dbUsuarios) 
+            {
+                modelUsuarios.Add(new Models.Usuario
+                    (
+                        dbUsuario.IdUsuario,
+                        dbUsuario.Dni,
+                        dbUsuario.Nombre,
+                        dbUsuario.Apellido,
+                        dbUsuario.FechaNacimiento,
+                        dbUsuario.Telefono,
+                        dbUsuario.Mail,
+                        dbUsuario.Contrasena,
+                        dbUsuario.Tipo
+                    ));
+            }
+            return modelUsuarios;
         }
     }
 }
