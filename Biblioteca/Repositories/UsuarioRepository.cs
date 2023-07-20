@@ -1,30 +1,37 @@
-﻿using Biblioteca.Models;
+﻿using BibliotecaDB;
 
 namespace Biblioteca.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
+        private BibliotecaContext _bibliotecaContext;
+
+        public UsuarioRepository(BibliotecaContext bibliotecaContext)
+        {
+            _bibliotecaContext = bibliotecaContext;
+        }
+
         public void Borrar(int idUsuario)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario BuscarPorId(int id)
+        public Models.Usuario BuscarPorId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario Editar(Usuario usuario)
+        public Models.Usuario Editar(Models.Usuario usuario)
         {
             throw new NotImplementedException();
         }
 
-        public Usuario Insertar(Usuario usuario)
+        public Models.Usuario Insertar(Models.Usuario usuario)
         {
             throw new NotImplementedException();
         }
 
-        public List<Usuario> TraerTodos()
+        public List<Models.Usuario> TraerTodos()
         {
             throw new NotImplementedException();
         }
