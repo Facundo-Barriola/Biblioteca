@@ -1,4 +1,4 @@
-﻿using Biblioteca.Models;
+﻿using BibliotecaDB;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,21 +18,47 @@ namespace Biblioteca.Repositories
         /// GetById y GetAll con sintáxis similar a SQL implementado con LINQ
         /// SaveChanges es un método que no se declara en BibliotecaContext porque ya viene incluído con Entity Framework Core.
 
-        public Salon GetById(int id)
+        public Models.Salon GetById(int id)
         {
-            return _context.Salons
-                .FirstOrDefault(s => s.IdSalon == id);
+            var dbSalon = _context.Salones.FirstOrDefault(s => s.IdSalon == id);
+            if (dbSalon != null) 
+            {
+                var salon = new Models.Salon(
+                    dbSalon.IdSalon,
+                    dbSalon.DescripcionSalon
+                    );
+                return salon;
+            }
+            return null;
         }
 
-        public IEnumerable<Salon> GetAll()
+        public List<Models.Salon> GetAll()
         {
-            return _context.Salons.ToList();
+            var modelSalones = new List<Models.Salon>();
+            var dbSalones = _context.Salones.ToList();
+            foreach (var dbSalon in dbSalones) 
+            {
+                modelSalones.Add(new Models.Salon
+                    (
+                        dbSalon.IdSalon,
+                        dbSalon.DescripcionSalon
+                    )); 
+            }
+            return modelSalones;
         }
 
-        public void Add(Salon salon)
+        public Models.Salon Add(Models.Salon salon)
         {
-            _context.Salons.Add(salon);
+            var modelSalon = new Models.Salon(salon.IdSalon, salon.DescripcionSalon);
+            var dbSalon = new BibliotecaDB.Salon
+            { 
+                IdSalon = salon.IdSalon,
+                DescripcionSalon = salon.DescripcionSalon
+            };
+            modelSalon.UpdateIdSalon(dbSalon.IdSalon);
+            _context.Salones.Add(dbSalon);
             _context.SaveChanges();
+            return salon;
         }
 
         public void Update(Salon salon)

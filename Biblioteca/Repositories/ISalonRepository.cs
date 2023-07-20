@@ -8,9 +8,9 @@ namespace Biblioteca.Repositories
     public interface ISalonRepository
     {
         Salon GetById(int id);
-        IEnumerable<Salon> GetAll();
-        void Add(Salon salon);
-        void Update(Salon salon);
+        List<Salon> GetAll();
+        Salon Add(Salon salon);
+        Salon Update(Salon salon);
         void Delete(Salon salon);
     }
 }
