@@ -13,34 +13,33 @@ namespace Biblioteca.Services
             _prestamoLibroRepository = prestamoLibroRepository;
         }
 
-        public List<PrestamoLibro> GetAllPrestamosLibros()
+        public List<PrestamoLibro> GetAllPrestamoLibros()
         {
             return _prestamoLibroRepository.GetAll();
         }
 
-        public PrestamoLibro GetPrestamoLibroById(int id)
+        public PrestamoLibro BuscarPrestamoLibroPorId(int id)
         {
-            return _prestamoLibroRepository.GetById(id);
+            return _prestamoLibroRepository.BuscarPorId(id);
         }
 
-        public void AddPrestamoLibro(int idPrestamoLibro, int idPrestamo, int idLibro)
+        public PrestamoLibro InsertarPrestamoLibro(int idPrestamoLibro, int IdPrestamo, int idLibro)
         {
-            PrestamoLibro prestamoLibro = new PrestamoLibro(idPrestamoLibro, idPrestamo, idLibro);
-            _prestamoLibroRepository.Add(prestamoLibro);
+            PrestamoLibro prestamoLibro = new PrestamoLibro(idPrestamoLibro, IdPrestamo, idLibro);
+            return _prestamoLibroRepository.Insertar(prestamoLibro);
         }
 
-        public void UpdatePrestamoLibro(int idPrestamoLibro, int idPrestamo, int idLibro)
+        public void EditarPrestamoLibro(PrestamoLibro prestamoLibro)
         {
-            PrestamoLibro prestamoLibro = new PrestamoLibro(idPrestamoLibro, idPrestamo, idLibro);
-            _prestamoLibroRepository.Update(prestamoLibro);
+            _prestamoLibroRepository.Editar(prestamoLibro);
         }
 
-        public void DeletePrestamoLibro(int id)
+        public void BorrarPrestamoLibro(int idPrestamoLibro)
         {
-            var prestamoLibro = _prestamoLibroRepository.GetById(id);
+            var prestamoLibro = _prestamoLibroRepository.BuscarPorId(idPrestamoLibro);
             if (prestamoLibro != null)
             {
-                _prestamoLibroRepository.Delete(prestamoLibro);
+                _prestamoLibroRepository.Borrar(idPrestamoLibro);
             }
         }
     }
