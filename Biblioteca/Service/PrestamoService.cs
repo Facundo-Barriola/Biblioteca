@@ -18,29 +18,28 @@ namespace Biblioteca.Services
             return _prestamoRepository.GetAll();
         }
 
-        public Prestamo GetPrestamoById(int id)
+        public Prestamo BuscarPrestamoPorId(int id)
         {
-            return _prestamoRepository.GetById(id);
+            return _prestamoRepository.BuscarPorId(id);
         }
 
-        public void AddPrestamo(int idPrestamo, DateTime? fechaExtraccion, DateTime fechaDevolucion, DateTime fechaPactada, bool? estadoPrestamo, string idUsuario)
+        public Prestamo InsertarPrestamo(int idPrestamo, DateTime? fechaExtraccion, DateTime fechaDevolucion, DateTime fechaPactada, bool? estadoPrestamo, string idUsuario)
         {
             Prestamo prestamo = new Prestamo(idPrestamo, fechaExtraccion, fechaDevolucion, fechaPactada, estadoPrestamo, idUsuario);
-            _prestamoRepository.Add(prestamo);
+            return _prestamoRepository.Insertar(prestamo);
         }
 
-        public void UpdatePrestamo(int idPrestamo, DateTime? fechaExtraccion, DateTime fechaDevolucion, DateTime fechaPactada, bool? estadoPrestamo, string idUsuario)
+        public void EditarPrestamo(Prestamo prestamo)
         {
-            Prestamo prestamo = new Prestamo(idPrestamo, fechaExtraccion, fechaDevolucion, fechaPactada, estadoPrestamo, idUsuario);
-            _prestamoRepository.Update(prestamo);
+            _prestamoRepository.Editar(prestamo);
         }
 
-        public void DeletePrestamo(int id)
+        public void BorrarPrestamo(int idPrestamo)
         {
-            var prestamo = _prestamoRepository.GetById(id);
+            var prestamo = _prestamoRepository.BuscarPorId(idPrestamo);
             if (prestamo != null)
             {
-                _prestamoRepository.Delete(prestamo);
+                _prestamoRepository.Borrar(idPrestamo);
             }
         }
     }
