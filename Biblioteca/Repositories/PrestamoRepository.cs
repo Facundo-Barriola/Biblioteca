@@ -1,6 +1,6 @@
-﻿using Biblioteca.Models;
+﻿using BibliotecaDB;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using Microsoft.Identity.Client;
 using System.Linq;
 
 namespace Biblioteca.Repositories
@@ -14,41 +14,91 @@ namespace Biblioteca.Repositories
             _context = context;
         }
 
-        /// GetById y GetAll con sintáxis similar a SQL implementado con LINQ
-        /// SaveChanges es un método que no se declara en BibliotecaContext porque ya viene incluido con Entity Framework Core.
-
-        /// Incluir a "PrestamoLibros" permite que al obtener un Prestamo, también se lean los libros asociados al prestamo.
-
-        public Prestamo GetById(int id)
+        public Models.Prestamo Insertar(Models.Prestamo prestamo)
         {
-            return _context.Prestamos
-                .Include(p => p.PrestamoLibros)
-                .FirstOrDefault(p => p.IdPrestamo == id);
-        }
+            var modelPrestamo = new Models.Prestamo
+            {
+                IdPrestamo = prestamo.IdPrestamo,
+                FechaExtraccion = prestamo.fechaExtraccion,
+                FechaDevolucion = prestamo.fechaDevolucion,
+                FechaPactada = prestamo.fechaPactada,
+                EstadoPrestamo = prestamo.estadoPrestamo,
+                IdUsuario = prestamo.IdUsuario
+            };
 
-        public IEnumerable<Prestamo> GetAll()
-        {
-            return _context.Prestamos
-                .Include(p => p.PrestamoLibros)
-                .ToList();
-        }
-
-        public void Add(Prestamo prestamo)
-        {
-            _context.Prestamos.Add(prestamo);
+            _context.Prestamos.Add(modelPrestamo);
             _context.SaveChanges();
+            return prestamo;
         }
 
-        public void Update(Prestamo prestamo)
+        public Models.Prestamo BuscarPorId(int id)
         {
-            _context.Prestamos.Update(prestamo);
-            _context.SaveChanges();
+            var dbPrestamo = _context.Prestamos.FirstOrDefault(e => e.IdPrestamo == id);
+            if (dbPrestamo != null)
+            {
+                var prestamo = new Models.Prestamo
+                (
+                    dbPrestamo.IdPrestamo,
+                    dbPrestamo.fechaExtraccion,
+                    dbPrestamo.fechaDevolucion,
+                    dbPrestamo.fechaPactada,
+                    dbPrestamo.estadoPrestamo,
+                    dbPrestamo.IdUsuario
+
+                );
+                return prestamo;
+            }
+            return null;
         }
 
-        public void Delete(Prestamo prestamo)
+        public List<Models.Prestamo> GetAll()
         {
-            _context.Prestamos.Remove(prestamo);
-            _context.SaveChanges();
+            var dbPrestamos = _context.Prestamos.ToList();
+            var modelPrestamos = new List<Models.Prestamo>();
+            foreach (var dbPrestamo in dbPrestamos)
+            {
+                modelPrestamos.Add(new Models.Prestamo
+                {
+                    dbPrestamo.IdPrestamo,
+                    dbPrestamo.fechaExtraccion,
+                    dbPrestamo.fechaDevolucion,
+                    dbPrestamo.fechaPactada,
+                    dbPrestamo.estadoPrestamo,
+                    dbPrestamo.IdUsuario
+                });
+            }
+            return modelPrestamos;
         }
+
+        public void Editar(Models.Prestamo prestamo)
+        {
+            var dbPrestamo = _context.Prestamos.FirstOrDefault(e => e.IdPrestamo == prestamo.IdPrestamo);
+            if (dbPrestamo != null)
+            {
+                dbPrestamo.IdPrestamo = prestamo.IdPrestamo;
+                dbPrestamo.FechaExtraccion = prestamo.fechaExtraccion;
+                dbPrestamo.FechaDevolucion = prestamo.fechaDevolucion;
+                dbPrestamo.FechaPactada = prestamo.fechaPactada;
+                dbPrestamo.EstadoPrestamo = prestamo.estadoPrestamo;
+                dbPrestamo.IdUsuario = prestamo.IdUsuario;
+
+                _context.SaveChanges();
+            }
+        }
+
+        public void Borrar(int prestamoId)
+        {
+            Prestamo prestamo = _context.Prestamos.Find(prestamoId);
+            if (prestamo != null)
+            {
+                _context.Prestamos.Remove(prestamo);
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("No se encontró el prestamo con el ID especificado");
+            }
+        }
+
     }
 }
