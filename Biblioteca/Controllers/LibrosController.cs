@@ -9,39 +9,39 @@ namespace Biblioteca.Controllers
     public class LibrosController : ControllerBase
     {
         private LibroService _libroService;
-        public LibrosController(LibroService libroService) 
+        public LibrosController(LibroService libroService)
         {
             _libroService = libroService;
         }
 
         [HttpGet]
-        public IActionResult GetAll() 
+        public IActionResult GetAll()
         {
             var libros = _libroService.GetAllLibros();
             return Ok(libros);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Borrar(int id) 
+        public IActionResult Borrar(int id)
         {
             _libroService.BorrarLibro(id);
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult Insertar([FromBody]Libro libro) 
+        public IActionResult Insertar([FromBody] Libro libro)
         {
             var nuevoLibro = _libroService.InsertarLibro(libro.IdLibro, libro.Titulo, libro.Sinopsis,
                 libro.PuntajeCritica, libro.Estado, libro.Disponibilidad, libro.IdSeccion);
-            return Ok(nuevoLibro);//CreatedAtAction(nameof(), new {id = nuevoLibro.IdLibro});
+            return Ok(nuevoLibro);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Editar(int id, [FromBody] Libro libroActualizado) 
+        public IActionResult Editar(int id, [FromBody] Libro libroActualizado)
         {
             var libroExistente = _libroService.BuscarLibroPorId(id);
 
-            if (libroExistente == null) 
+            if (libroExistente == null)
             {
                 return NotFound();
             }
@@ -55,6 +55,20 @@ namespace Biblioteca.Controllers
             _libroService.EditarLibro(libroExistente);
 
             return NoContent();
+        }
+
+        [HttpGet("{idLibro}")]
+        public IActionResult UbicacionLibro(int idLibro) 
+        {
+            string ubicacion = _libroService.UbicacionLibro(idLibro);
+            if (ubicacion != null)
+            {
+                return Ok(ubicacion);
+            }
+            else 
+            {
+                return NotFound("Libro no encontrado");
+            }
         }
     }
 }
