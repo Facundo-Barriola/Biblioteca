@@ -11,9 +11,9 @@ public class PrestamoLibro
 
     public int IdLibro { get; set; }
 
-    public Libro IdLibroNavigation { get; set; } = null!;
+    private Libro IdLibroNavigation { get; set; } = null!;
 
-    public Prestamo IdPrestamoNavigation { get; set; } = null!;
+    private Prestamo IdPrestamoNavigation { get; set; } = null!;
 
     public PrestamoLibro(int idPrestamoLibro, int idPrestamo, int idLibro)
     {
