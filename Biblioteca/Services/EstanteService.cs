@@ -18,29 +18,28 @@ namespace Biblioteca.Services
             return _estanteRepository.GetAll();
         }
 
-        public Estante GetEstanteById(int id)
+        public Estante BuscarEstantePorId(int id)
         {
-            return _estanteRepository.GetById(id);
+            return _estanteRepository.BuscarPorId(id);
         }
 
-        public void AddEstante(int idEstante, string descripcionEstante, int idEstanteria)
+        public Estante InsertarEstante(int idEstante, string descripcionEstante, int idEstanteria)
         {
             Estante estante = new Estante(idEstante, descripcionEstante, idEstanteria);
-            _estanteRepository.Add(estante);
+            return _estanteRepository.Insertar(estante);
         }
 
-        public void UpdateEstante(int idEstante, string descripcionEstante, int idEstanteria)
+        public void EditarEstante(Estante estante)
         {
-            Estante estante = new Estante(idEstante, descripcionEstante, idEstanteria);
-            _estanteRepository.Update(estante);
+            _estanteRepository.Editar(estante);
         }
 
-        public void DeleteEstante(int id)
+        public void BorrarEstante(int idEstante)
         {
-            var estante = _estanteRepository.GetById(id);
+            var estante = _estanteRepository.BuscarPorId(idEstante);
             if (estante != null)
             {
-                _estanteRepository.Delete(estante);
+                _estanteRepository.Borrar(idEstante);
             }
         }
     }
