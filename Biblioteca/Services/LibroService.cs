@@ -12,9 +12,14 @@ namespace Biblioteca.Services
         private IEstanteriaRepository _estanteriaRepository;
         private ISalonRepository _salonRepository;
 
-        public LibroService(ILibroRepository libroRepository) 
+        public LibroService(ILibroRepository libroRepository, ISeccionRepository seccionRepository, IEstanteRepository estanteRepository,
+            IEstanteriaRepository estanteriaRepository, ISalonRepository salonRepository) 
         {
             _libroRepository = libroRepository;
+            _seccionRepository = seccionRepository;
+            _estanteRepository = estanteRepository;
+            _estanteriaRepository = estanteriaRepository;
+            _salonRepository = salonRepository;
         }
         public List<Libro> GetAllLibros()
         {
@@ -63,7 +68,7 @@ namespace Biblioteca.Services
                                           Seccion = seccion.DescripcionSeccion
                                       }).FirstOrDefault();
 
-                if (libroBuscado != null) 
+                if (ubicacionLibro != null) 
                 {
                     return $"Ubicacion del libro: {ubicacionLibro.Salon}, {ubicacionLibro.Estanteria}, {ubicacionLibro.Estante}," +
                         $" {ubicacionLibro.Seccion}";
