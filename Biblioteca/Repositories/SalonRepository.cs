@@ -50,7 +50,7 @@ namespace Biblioteca.Repositories
                 modelSalones.Add(new Models.Salon
                 (
                     dbSalon.IdSalon,
-                    dbSalon.DescripcionSalon,
+                    dbSalon.DescripcionSalon
                     ));
             }
             return modelSalones;
