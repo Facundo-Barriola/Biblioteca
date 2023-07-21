@@ -18,29 +18,29 @@ namespace Biblioteca.Services
             return _seccionRepository.GetAll();
         }
 
-        public Seccion GetSeccionById(int id)
+        public Seccion BuscarSeccionPorId(int id)
         {
-            return _seccionRepository.GetById(id);
+            return _seccionRepository.BuscarPorId(id);
         }
 
-        public void AddSeccion(int idSeccion, string descripcionSeccion, int idEstante)
+        public Seccion InsertarSeccion(int idSeccion, string descripcionSeccion, int idEstante)
         {
             Seccion seccion = new Seccion(idSeccion, descripcionSeccion, idEstante);
-            _seccionRepository.Add(seccion);
+            return _seccionRepository.Insertar(seccion);
         }
 
-        public void UpdateSeccion(int idSeccion, string descripcionSeccion, int idEstante)
+        public void EditarSeccion(Seccion seccion)
         {
-            Seccion seccion = new Seccion(idSeccion, descripcionSeccion, idEstante);
-            _seccionRepository.Update(seccion);
+            _seccionRepository.Editar(seccion);
         }
 
-        public void DeleteSeccion(int id)
+        public void BorrarSeccion(int idSeccion)
         {
-            var seccion = _seccionRepository.GetById(id);
+            var seccion = _seccionRepository.BuscarPorId(idSeccion);
             if (seccion != null)
             {
-                _seccionRepository.Delete(seccion);
+                _seccionRepository.Borrar(idSeccion);
             }
         }
     }
+}
