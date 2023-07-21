@@ -9,61 +9,51 @@ namespace Biblioteca.Controllers
     [Route("api/estanterias")]
     public class EstanteriaController : ControllerBase
     {
-        private readonly EstanteriaService _estanteriaService;
+        private EstanteriaService _estanteriaService;
 
         public EstanteriaController(EstanteriaService estanteriaService)
         {
             _estanteriaService = estanteriaService;
         }
 
-        // GETALL
-
+        /// GETALL
         [HttpGet]
-        public ActionResult<IEnumerable<Estanteria>> GetAllEstanterias()
+        public IActionResult GetAll()
         {
             var estanterias = _estanteriaService.GetAllEstanterias();
             return Ok(estanterias);
         }
 
-        // GETBYID
-        [HttpGet("{id}")]
-        public ActionResult<Estanteria> GetEstanteriaById(int id)
+        /// ADD
+        [HttpPost]
+        public IActionResult Insertar([FromBody] Estanteria estanteria)
         {
-            var estanteria = _estanteriaService.GetEstanteriaById(id);
-            if (estanteria == null)
+            var nuevaEstanteria = _estanteriaService.InsertarEstanteria(estanteria.IdEstanteria, estanteria.DescripcionEstanteria, estanteria.IdSalon);
+            return Ok(nuevaEstanteria);
+        }
+
+        /// UPDATE
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, [FromBody] Estanteria estanteriaActualizada)
+        {
+            var estanteriaActual = _estanteriaService.BuscarEstanteriaPorId(id);
+            if (estanteriaActual == null || estanteriaActualizada == null)
             {
                 return NotFound();
             }
-            return Ok(estanteria);
-        }
+            estanteriaActual.DescripcionEstanteria = estanteriaActualizada.DescripcionEstanteria;
+            estanteriaActual.IdSalon = estanteriaActualizada.IdSalon;
 
-        // ADD
-        [HttpPost]
-        public IActionResult AddEstanteria([FromBody] Estanteria estanteria)
-        {
-            _estanteriaService.AddEstanteria(estanteria.IdEstanteria, estanteria.DescripcionEstanteria, estanteria.IdSalon);
-            return CreatedAtAction(nameof(GetEstanteriaById), new { id = estanteria.IdEstanteria }, estanteria);
-        }
-
-        // UPDATE
-        [HttpPut("{id}")]
-        public IActionResult UpdateEstanteria(int id, [FromBody] Estanteria estanteria)
-        {
-            if (id != estanteria.IdEstanteria)
-            {
-                return BadRequest();
-            }
-
-            _estanteriaService.UpdateEstanteria(estanteria.IdEstanteria, estanteria.DescripcionEstanteria, estanteria.IdSalon);
+            _estanteriaService.EditarEstanteria(estanteriaActual);
             return NoContent();
         }
 
-        // DELETE
+        /// DELETE
         [HttpDelete("{id}")]
-        public IActionResult DeleteEstanteria(int id)
+        public IActionResult Borrar(int id)
         {
-            _estanteriaService.DeleteEstanteria(id);
-            return NoContent();
+            _estanteriaService.BorrarEstanteria(id);
+            return Ok();
         }
     }
 }
