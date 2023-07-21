@@ -9,55 +9,51 @@ namespace Biblioteca.Controllers
     [Route("api/estantes")]
     public class EstanteController : ControllerBase
     {
-        private readonly EstanteService _estanteService;
+        private EstanteService _estanteService;
 
         public EstanteController(EstanteService estanteService)
         {
             _estanteService = estanteService;
         }
 
+        /// GETALL
         [HttpGet]
-        public ActionResult<IEnumerable<Estante>> GetAllEstantes()
+        public IActionResult GetAll()
         {
             var estantes = _estanteService.GetAllEstantes();
             return Ok(estantes);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Estante> GetEstanteById(int id)
+        /// ADD
+        [HttpPost]
+        public IActionResult Insertar([FromBody] Estante estante)
         {
-            var estante = _estanteService.GetEstanteById(id);
-            if (estante == null)
+            var nuevaEstante = _estanteService.InsertarEstante(estante.IdEstante, estante.DescripcionEstante, estante.IdEstanteria);
+            return Ok(nuevaEstante);
+        }
+
+        /// UPDATE
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, [FromBody] Estante estanteActualizada)
+        {
+            var estanteActual = _estanteService.BuscarEstantePorId(id);
+            if (estanteActual == null || estanteActualizada == null)
             {
                 return NotFound();
             }
-            return Ok(estante);
-        }
+            estanteActual.DescripcionEstante = estanteActualizada.DescripcionEstante;
+            estanteActual.IdEstanteria = estanteActualizada.IdEstanteria;
 
-        [HttpPost]
-        public IActionResult AddEstante([FromBody] Estante estante)
-        {
-            _estanteService.AddEstante(estante.IdEstante, estante.DescripcionEstante, estante.IdEstanteria);
-            return CreatedAtAction(nameof(GetEstanteById), new { id = estante.IdEstante }, estante);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult UpdateEstante(int id, [FromBody] Estante estante)
-        {
-            if (id != estante.IdEstante)
-            {
-                return BadRequest();
-            }
-
-            _estanteService.UpdateEstante(estante.IdEstante, estante.DescripcionEstante, estante.IdEstanteria);
+            _estanteService.EditarEstante(estanteActual);
             return NoContent();
         }
 
+        /// DELETE
         [HttpDelete("{id}")]
-        public IActionResult DeleteEstante(int id)
+        public IActionResult Borrar(int id)
         {
-            _estanteService.DeleteEstante(id);
-            return NoContent();
+            _estanteService.BorrarEstante(id);
+            return Ok();
         }
     }
 }
