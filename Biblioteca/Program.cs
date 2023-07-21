@@ -24,6 +24,7 @@ builder.Services.AddScoped<ISeccionRepository, SeccionRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IPrestamoRepository, PrestamoRepository>();
 builder.Services.AddScoped<IPrestamoLibroRepository, PrestamoLibroRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 // Dependencias para los servicios correspondientes
 builder.Services.AddScoped<LibroService>();
@@ -35,6 +36,7 @@ builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<PrestamoService>();
 builder.Services.AddScoped<PrestamoLibroService>();
 builder.Services.AddScoped<IUbicacionService, UbicacionService>();
+builder.Services.AddScoped<UsuarioService>();
 
 var app = builder.Build();
 

@@ -6,7 +6,7 @@ namespace Biblioteca.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuariosController
+    public class UsuariosController : ControllerBase
     {
         private UsuarioService _usuarioService;
 
@@ -28,7 +28,7 @@ namespace Biblioteca.Controllers
             var nuevoUsuario = _usuarioService.InsertarUsuario(usuario.IdUsuario, usuario.Dni,
                 usuario.Nombre, usuario.Apellido, usuario.FechaNacimiento, usuario.Telefono, usuario.Mail,
                 usuario.Contrasena, usuario.Tipo);
-            return CreatedAtAction(nameof(), new { id = nuevoUsuario.IdUsuario });
+            return Ok(nuevoUsuario);
         }
 
         [HttpDelete("{id}")]
@@ -39,10 +39,10 @@ namespace Biblioteca.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Editar(int id, [FromBody] Usuario usuarioActualizado) 
+        public IActionResult Editar(int id, [FromBody] Usuario usuarioActualizado)
         {
             var usuarioExistente = _usuarioService.BuscarUsuarioPorId(id);
-            if (usuarioExistente == null) 
+            if (usuarioExistente == null)
             {
                 return NotFound();
             }
