@@ -9,55 +9,51 @@ namespace Biblioteca.Controllers
     [Route("api/prestamoLibros")]
     public class PrestamoLibroController : ControllerBase
     {
-        private readonly PrestamoLibroService _prestamoLibroService;
+        private PrestamoLibroService _prestamoLibroService;
 
         public PrestamoLibroController(PrestamoLibroService prestamoLibroService)
         {
             _prestamoLibroService = prestamoLibroService;
         }
 
+        /// GETALL
         [HttpGet]
-        public ActionResult<IEnumerable<PrestamoLibro>> GetAllPrestamosLibros()
+        public IActionResult GetAll()
         {
-            var prestamosLibros = _prestamoLibroService.GetAllPrestamosLibros();
-            return Ok(prestamosLibros);
+            var prestamoLibros = _prestamoLibroService.GetAllPrestamoLibros();
+            return Ok(prestamoLibros);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<PrestamoLibro> GetPrestamoLibroById(int id)
+        /// ADD
+        [HttpPost]
+        public IActionResult Insertar([FromBody] PrestamoLibro prestamoLibro)
         {
-            var prestamoLibro = _prestamoLibroService.GetPrestamoLibroById(id);
-            if (prestamoLibro == null)
+            var nuevaPrestamoLibro = _prestamoLibroService.InsertarPrestamoLibro(prestamoLibro.IdPrestamoLibro, prestamoLibro.IdPrestamo, prestamoLibro.IdLibro);
+            return Ok(nuevaPrestamoLibro);
+        }
+
+        /// UPDATE
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, [FromBody] PrestamoLibro prestamoLibroActualizada)
+        {
+            var prestamoLibroActual = _prestamoLibroService.BuscarPrestamoLibroPorId(id);
+            if (prestamoLibroActual == null || prestamoLibroActualizada == null)
             {
                 return NotFound();
             }
-            return Ok(prestamoLibro);
-        }
+            prestamoLibroActual.IdPrestamo = prestamoLibroActualizada.IdPrestamo;
+            prestamoLibroActual.IdLibro = prestamoLibroActualizada.IdLibro;
 
-        [HttpPost]
-        public IActionResult AddPrestamoLibro([FromBody] PrestamoLibro prestamoLibro)
-        {
-            _prestamoLibroService.AddPrestamoLibro(prestamoLibro.IdPrestamoLibro, prestamoLibro.IdPrestamo, prestamoLibro.IdLibro);
-            return CreatedAtAction(nameof(GetPrestamoLibroById), new { id = prestamoLibro.IdPrestamoLibro }, prestamoLibro);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult UpdatePrestamoLibro(int id, [FromBody] PrestamoLibro prestamoLibro)
-        {
-            if (id != prestamoLibro.IdPrestamoLibro)
-            {
-                return BadRequest();
-            }
-
-            _prestamoLibroService.UpdatePrestamoLibro(prestamoLibro.IdPrestamoLibro, prestamoLibro.IdPrestamo, prestamoLibro.IdLibro);
+            _prestamoLibroService.EditarPrestamoLibro(prestamoLibroActual);
             return NoContent();
         }
 
+        /// DELETE
         [HttpDelete("{id}")]
-        public IActionResult DeletePrestamoLibro(int id)
+        public IActionResult Borrar(int id)
         {
-            _prestamoLibroService.DeletePrestamoLibro(id);
-            return NoContent();
+            _prestamoLibroService.BorrarPrestamoLibro(id);
+            return Ok();
         }
     }
 }
