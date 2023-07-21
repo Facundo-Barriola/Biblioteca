@@ -23,14 +23,14 @@ namespace Biblioteca.Repositories
                 IdEstante = seccion.IdEstante
             };
 
-            _context.Seccions.Add(modelSeccion);
+            _context.Secciones.Add(modelSeccion);
             _context.SaveChanges();
             return seccion;
         }
 
         public Models.Seccion BuscarPorId(int id)
         {
-            var dbSeccion = _context.Seccions.FirstOrDefault(e => e.IdSeccion == id);
+            var dbSeccion = _context.Secciones.FirstOrDefault(e => e.IdSeccion == id);
             if (dbSeccion != null)
             {
                 var seccion = new Models.Seccion
@@ -46,23 +46,23 @@ namespace Biblioteca.Repositories
 
         public List<Models.Seccion> GetAll()
         {
-            var dbSeccions = _context.Seccions.ToList();
-            var modelSeccions = new List<Models.Seccion>();
-            foreach (var dbSeccion in dbSeccions)
+            var dbSecciones = _context.Secciones.ToList();
+            var modelSecciones = new List<Models.Seccion>();
+            foreach (var dbSeccion in dbSecciones)
             {
-                modelSeccions.Add(new Models.Seccion
+                modelSecciones.Add(new Models.Seccion
                 {
                     dbSeccion.IdSeccion,
                     dbSeccion.DescripcionSeccion,
                     dbSeccion.IdEstante
                 });
             }
-            return modelSeccions;
+            return modelSecciones;
         }
 
         public void Editar(Models.Seccion seccion)
         {
-            var dbSeccion = _context.Seccions.FirstOrDefault(e => e.IdSeccion == seccion.IdSeccion);
+            var dbSeccion = _context.Secciones.FirstOrDefault(e => e.IdSeccion == seccion.IdSeccion);
             if (dbSeccion != null)
             {
                 dbSeccion.DescripcionSeccion = seccion.DescripcionSeccion;
@@ -73,10 +73,10 @@ namespace Biblioteca.Repositories
 
         public void Borrar(int seccionId)
         {
-            Seccion seccion = _context.Seccions.Find(seccionId);
+            Seccion seccion = _context.Secciones.Find(seccionId);
             if (seccion != null)
             {
-                _context.Seccions.Remove(seccion);
+                _context.Secciones.Remove(seccion);
                 _context.SaveChanges();
             }
             else
