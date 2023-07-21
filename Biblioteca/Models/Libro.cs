@@ -7,12 +7,41 @@ namespace Biblioteca.Models;
 public class Libro
 {   
     public int IdLibro { get; set; }
-
-    public string Titulo { get; set; }
+    private string _titulo;
+    public string Titulo
+    {
+        get { return _titulo; }
+        set
+        {
+            if (value != null)
+            {
+                _titulo = value;
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(Titulo), "El título no puede ser nulo.");
+            }
+        }
+    }
 
     public string Sinopsis { get; set; }
 
-    public int PuntajeCritica { get; set; }
+    private int _puntajeCritica;
+    public int PuntajeCritica
+    {
+        get { return _puntajeCritica; }
+        set
+        {
+            if (value >= 0 && value <= 5)
+            {
+                _puntajeCritica = value;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(PuntajeCritica), "El puntaje de crítica debe estar entre 0 y 5.");
+            }
+        }
+    }
 
     public int Estado { get; set; }
 
@@ -38,23 +67,26 @@ public class Libro
     {
         IdLibro = id;
     }
-    public void UpdateTitulo(string newTitulo) 
+    public void UpdateTitulo(string newTitulo)
     {
         Titulo = newTitulo;
     }
+
     public void UpdateSinopsis(string newSinopsis) 
     {
         Sinopsis = newSinopsis;
     }
-    public void UpdatePuntaje(int newPuntaje) 
+
+    public void UpdatePuntaje(int newPuntaje)
     {
         PuntajeCritica = newPuntaje;
     }
+
     public void UpdateEstado(int newEstado) 
     {
         Estado = newEstado;
     }
-    //Consultar si es mejor realizarlo con int o con string
+
     public void UpdateDisponibilidad(int newDisponibilidad) 
     {
         if (newDisponibilidad == 1)
