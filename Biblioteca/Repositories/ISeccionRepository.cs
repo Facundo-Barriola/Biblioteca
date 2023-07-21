@@ -1,16 +1,13 @@
 ﻿using Biblioteca.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Biblioteca.Repositories
 {
     public interface ISeccionRepository
     {
-        Seccion GetById(int id);
-        IEnumerable<Seccion> GetAll();
-        void Add(Seccion seccion);
-        void Update(Seccion seccion);
-        void Delete(Seccion seccion);
+        Seccion<Seccion> GetAll();
+        Seccion Insertar(Seccion Seccion);
+        void Editar(Seccion Seccion);
+        void Borrar(int seccionId);
+        Seccion BuscarPorId(int seccionId);
     }
 }
