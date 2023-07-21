@@ -11,9 +11,9 @@ public class Estanteria
 
     public int IdSalon { get; set; }
 
-    public ICollection<Estante> Estantes { get; set; } = new List<Estante>();
+    private ICollection<Estante> Estantes { get; set; } = new List<Estante>();
 
-    public Salon IdSalonNavigation { get; set; } = null!;
+    private Salon IdSalonNavigation { get; set; } = null!;
 
     public Estanteria(int idEstanteria, string descripcionEstanteria, int idSalon)
     {
