@@ -56,5 +56,12 @@ namespace Biblioteca.Controllers
 
             return NoContent();
         }
+
+        [HttpGet]
+        public IActionResult UbicacionLibro([FromBody] Libro libro) 
+        {
+            _libroService.UbicacionLibro(libro);
+            return NoContent();
+        }
     }
 }
