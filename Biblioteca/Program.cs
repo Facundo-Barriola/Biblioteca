@@ -15,8 +15,25 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BibliotecaContext>(options => {
     options.
     UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")); });
-builder.Services.AddScoped< ILibroRepository,LibroRepository>();
+// Dependencias para las interfaces y repositorios correspondientes
+builder.Services.AddScoped<ILibroRepository, LibroRepository>();
+builder.Services.AddScoped<ISalonRepository, SalonRepository>();
+builder.Services.AddScoped<IEstanteriaRepository, EstanteriaRepository>();
+builder.Services.AddScoped<IEstanteRepository, EstanteRepository>();
+builder.Services.AddScoped<ISeccionRepository, SeccionRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IPrestamoRepository, PrestamoRepository>();
+builder.Services.AddScoped<IPrestamoLibroRepository, PrestamoLibroRepository>();
+
+// Dependencias para los servicios correspondientes
 builder.Services.AddScoped<LibroService>();
+builder.Services.AddScoped<SalonService>();
+builder.Services.AddScoped<EstanteriaService>();
+builder.Services.AddScoped<EstanteService>();
+builder.Services.AddScoped<SeccionService>();
+builder.Services.AddScoped<UsuarioService>();
+builder.Services.AddScoped<PrestamoService>();
+builder.Services.AddScoped<PrestamoLibroService>();
 builder.Services.AddScoped<IUbicacionService, UbicacionService>();
 
 var app = builder.Build();

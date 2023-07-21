@@ -10,7 +10,7 @@ namespace Biblioteca.Controllers
     [Route("api/salones")]
     public class SalonController : ControllerBase
     {
-        private readonly SalonService _salonService;
+        private SalonService _salonService;
 
         public SalonController(SalonService salonService)
         {
@@ -19,51 +19,41 @@ namespace Biblioteca.Controllers
 
         /// GETALL
         [HttpGet]
-        public ActionResult<IEnumerable<Salon>> GetAllSalones()
+        public IActionResult GetAll()
         {
             var salones = _salonService.GetAllSalones();
             return Ok(salones);
         }
 
-        /// GETBYID
-        [HttpGet("{id}")]
-        public ActionResult<Salon> GetSalonById(int id)
-        {
-            var salon = _salonService.GetSalonById(id);
-            if (salon == null)
-            {
-                return NotFound();
-            }
-            return Ok(salon);
-        }
-
         /// ADD
         [HttpPost]
-        public IActionResult AddSalon([FromBody] Salon salon)
+        public IActionResult Insertar([FromBody] Salon salon)
         {
-            _salonService.AddSalon(salon.IdSalon, salon.DescripcionSalon);
-            return CreatedAtAction(nameof(GetSalonById), new { id = salon.IdSalon }, salon);
+            var nuevoSalon = _salonService.InsertarSalon(salon.IdSalon, salon.DescripcionSalon);
+            return Ok(nuevoSalon);
         }
 
         /// UPDATE
         [HttpPut("{id}")]
-        public IActionResult UpdateSalon(int id, [FromBody] Salon salon)
+        public IActionResult Editar(int id, [FromBody] Salon salonActualizado)
         {
-            if (id != salon.IdSalon)
+            var salonActual = _salonService.BuscarSalonPorId(id);
+            if (salonActual == null || salonActualizado == null)
             {
-                return BadRequest();
+                return NotFound();
             }
+            salonActual.DescripcionSalon = salonActualizado.DescripcionSalon;
 
-            _salonService.UpdateSalon(salon.IdSalon, salon.DescripcionSalon);
+            _salonService.EditarSalon(salonActual);
             return NoContent();
         }
 
         /// DELETE
-        [HttpDelete("{id}")]
-        public IActionResult DeleteSalon(int id)
+        [HttpDelete("/{id}")]
+        public IActionResult Borrar(int id)
         {
-            _salonService.DeleteSalon(id);
-            return NoContent();
+            _salonService.BorrarSalon(id);
+            return Ok();
         }
     }
 }
