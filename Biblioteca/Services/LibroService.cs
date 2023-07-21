@@ -74,7 +74,7 @@ namespace Biblioteca.Services
                         $" {ubicacionLibro.Seccion}";
                 }
             }
-            return "Libro no enconrtado";
+            return "Libro no encontrado";
         }
     }
 }
