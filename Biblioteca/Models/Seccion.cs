@@ -11,7 +11,7 @@ public class Seccion
 
     public int IdEstante { get; set; }
 
-    public Estante IdEstanteNavigation { get; set; } = null!;
+    private Estante IdEstanteNavigation { get; set; } = null!;
 
-    public ICollection<Libro> Libros { get; set; } = new List<Libro>();
+    private ICollection<Libro> Libros { get; set; } = new List<Libro>();
 }

@@ -1,0 +1,26 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vs/Biblioteca
+/.vs/Biblioteca/config
+/.vs/Biblioteca/config/applicationhost.config
+/.vs/Biblioteca/FileContentIndex
+/.vs/Biblioteca/FileContentIndex/4584b792-2c55-46a9-ad47-de480e414085.vsidx
+/.vs/Biblioteca/FileContentIndex/6181e25f-025e-40d3-9d90-e95ee85cf4bf.vsidx
+/.vs/Biblioteca/FileContentIndex/78a186d9-0909-41ba-9732-e2bc27692080.vsidx
+/.vs/Biblioteca/FileContentIndex/8e5feed3-5195-4234-86ee-3beea59e7189.vsidx
+/.vs/Biblioteca/v17
+/.vs/Biblioteca/v17/.wsuo
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/Biblioteca/obj/Release/net6.0
+/Biblioteca/obj/Release/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+/Biblioteca/obj/Release/net6.0/Biblioteca.AssemblyInfo.cs
+/Biblioteca/obj/Release/net6.0/Biblioteca.AssemblyInfoInputs.cache
+/Biblioteca/obj/Release/net6.0/Biblioteca.assets.cache
+/Biblioteca/obj/Release/net6.0/Biblioteca.csproj.AssemblyReference.cache
+/Biblioteca/obj/Release/net6.0/Biblioteca.GeneratedMSBuildEditorConfig.editorconfig
+/Biblioteca/obj/Release/net6.0/Biblioteca.GlobalUsings.g.cs
+/BibliotecaDB/obj/*

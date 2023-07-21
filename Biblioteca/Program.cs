@@ -1,3 +1,8 @@
+using Biblioteca.Repositories;
+using Biblioteca.Services;
+using Microsoft.EntityFrameworkCore;
+using BibliotecaDB;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +12,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<BibliotecaContext>(options => {
+    options.
+    UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaConnection")); });
+builder.Services.AddScoped< ILibroRepository,LibroRepository>();
+builder.Services.AddScoped<LibroService>();
+builder.Services.AddScoped<ISalonRepository, SalonRepository>();
+builder.Services.AddScoped<SalonService>();
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<BibliotecaContext>();
+    context.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

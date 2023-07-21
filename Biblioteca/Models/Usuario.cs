@@ -21,5 +21,5 @@ public class Usuario
 
     public bool? Tipo { get; set; }
 
-    public ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
+    private ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
 }
