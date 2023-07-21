@@ -33,7 +33,7 @@ namespace Biblioteca.Controllers
         {
             var nuevoLibro = _libroService.InsertarLibro(libro.IdLibro, libro.Titulo, libro.Sinopsis,
                 libro.PuntajeCritica, libro.Estado, libro.Disponibilidad, libro.IdSeccion);
-            return Ok(nuevoLibro);//CreatedAtAction(nameof(), new {id = nuevoLibro.IdLibro});
+            return Ok(nuevoLibro);
         }
 
         [HttpPut("{id}")]
