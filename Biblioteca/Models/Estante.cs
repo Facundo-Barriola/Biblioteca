@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Biblioteca.Models;
@@ -11,7 +11,26 @@ public class Estante
 
     public int IdEstanteria { get; set; }
 
-    public Estanteria IdEstanteriaNavigation { get; set; } = null!;
+    private Estanteria IdEstanteriaNavigation { get; set; } = null!;
 
-    public ICollection<Seccion> Seccions { get; set; } = new List<Seccion>();
+    private ICollection<Seccion> Seccions { get; set; } = new List<Seccion>();
+
+    public Estante(int idEstante, string descripcionEstante, int idEstanteria)
+    {
+        IdEstante = idEstante;
+        DescripcionEstante = descripcionEstante;
+        IdEstanteria = idEstanteria;
+    }
+
+    public void UpdateIdEstante(int newIdEstante)
+    {
+        IdEstante = newIdEstante;
+    }
+
+    public void UpdateDescripcionEstante(string newDescripcionEstante)
+    {
+        DescripcionEstante = newDescripcionEstante;
+    }
 }
+
+
