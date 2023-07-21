@@ -21,7 +21,6 @@ builder.Services.AddScoped<ISalonRepository, SalonRepository>();
 builder.Services.AddScoped<IEstanteriaRepository, EstanteriaRepository>();
 builder.Services.AddScoped<IEstanteRepository, EstanteRepository>();
 builder.Services.AddScoped<ISeccionRepository, SeccionRepository>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IPrestamoRepository, PrestamoRepository>();
 builder.Services.AddScoped<IPrestamoLibroRepository, PrestamoLibroRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
@@ -35,7 +34,7 @@ builder.Services.AddScoped<SeccionService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<PrestamoService>();
 builder.Services.AddScoped<PrestamoLibroService>();
-builder.Services.AddScoped<IUbicacionService, UbicacionService>();
+builder.Services.AddScoped<UbicacionService>();
 builder.Services.AddScoped<UsuarioService>();
 
 var app = builder.Build();

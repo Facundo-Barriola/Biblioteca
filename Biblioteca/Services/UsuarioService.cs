@@ -5,8 +5,8 @@ namespace Biblioteca.Services
 {
     public class UsuarioService
     {
-        private UsuarioRepository _usuarioRepository;
-        public UsuarioService(UsuarioRepository usuarioRepository) 
+        private IUsuarioRepository _usuarioRepository;
+        public UsuarioService(IUsuarioRepository usuarioRepository) 
         {
             _usuarioRepository = usuarioRepository;
         }

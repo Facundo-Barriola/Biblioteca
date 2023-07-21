@@ -21,7 +21,7 @@ namespace Biblioteca.Controllers
             return Ok(libros);
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Borrar(int id) 
         {
             _libroService.BorrarLibro(id);

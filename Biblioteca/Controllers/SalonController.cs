@@ -49,7 +49,7 @@ namespace Biblioteca.Controllers
         }
 
         /// DELETE
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Borrar(int id)
         {
             _salonService.BorrarSalon(id);
