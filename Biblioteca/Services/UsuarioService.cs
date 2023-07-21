@@ -16,8 +16,11 @@ namespace Biblioteca.Services
             return _usuarioRepository.TraerTodos();
         }
 
-        public Usuario InsertarUsuario(Usuario usuario) 
+        public Usuario InsertarUsuario(int idUsuario, string dni, string nombre, string apellido, DateTime fechaNacimiento,
+        string telefono, string mail, string contrasena, bool tipo) 
         {
+            var usuario = new Usuario(idUsuario, dni, nombre, apellido, fechaNacimiento,
+                telefono, mail, contrasena, tipo); 
             return _usuarioRepository.Insertar(usuario);
         }
 
