@@ -34,7 +34,6 @@ builder.Services.AddScoped<SeccionService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<PrestamoService>();
 builder.Services.AddScoped<PrestamoLibroService>();
-
 builder.Services.AddScoped<IUbicacionService, UbicacionService>();
 
 var app = builder.Build();
