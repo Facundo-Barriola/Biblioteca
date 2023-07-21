@@ -16,17 +16,19 @@ namespace Biblioteca.Repositories
 
         public Models.Prestamo Insertar(Models.Prestamo prestamo)
         {
-            var modelPrestamo = new Models.Prestamo
+            var modelPrestamo = new Models.Prestamo(prestamo.IdPrestamo, prestamo.FechaExtraccion, prestamo.FechaDevolucion, prestamo.FechaPactada, prestamo.EstadoPrestamo, prestamo.IdUsuario);
+            var dbPrestamo = new BibliotecaDB.Prestamo
             {
                 IdPrestamo = prestamo.IdPrestamo,
-                FechaExtraccion = prestamo.fechaExtraccion,
-                FechaDevolucion = prestamo.fechaDevolucion,
-                FechaPactada = prestamo.fechaPactada,
-                EstadoPrestamo = prestamo.estadoPrestamo,
+                FechaExtraccion = prestamo.FechaExtraccion,
+                FechaDevolucion = prestamo.FechaDevolucion,
+                FechaPactada = prestamo.FechaPactada,
+                EstadoPrestamo = prestamo.EstadoPrestamo,
                 IdUsuario = prestamo.IdUsuario
             };
 
-            _context.Prestamos.Add(modelPrestamo);
+            modelPrestamo.UpdateIdPrestamo(dbPrestamo.IdPrestamo);
+            _context.Prestamos.Add(dbPrestamo);
             _context.SaveChanges();
             return prestamo;
         }
@@ -39,10 +41,10 @@ namespace Biblioteca.Repositories
                 var prestamo = new Models.Prestamo
                 (
                     dbPrestamo.IdPrestamo,
-                    dbPrestamo.fechaExtraccion,
-                    dbPrestamo.fechaDevolucion,
-                    dbPrestamo.fechaPactada,
-                    dbPrestamo.estadoPrestamo,
+                    dbPrestamo.FechaExtraccion,
+                    dbPrestamo.FechaDevolucion,
+                    dbPrestamo.FechaPactada,
+                    dbPrestamo.EstadoPrestamo,
                     dbPrestamo.IdUsuario
 
                 );
@@ -58,14 +60,14 @@ namespace Biblioteca.Repositories
             foreach (var dbPrestamo in dbPrestamos)
             {
                 modelPrestamos.Add(new Models.Prestamo
-                {
+                (
                     dbPrestamo.IdPrestamo,
-                    dbPrestamo.fechaExtraccion,
-                    dbPrestamo.fechaDevolucion,
-                    dbPrestamo.fechaPactada,
-                    dbPrestamo.estadoPrestamo,
+                    dbPrestamo.FechaExtraccion,
+                    dbPrestamo.FechaDevolucion,
+                    dbPrestamo.FechaPactada,
+                    dbPrestamo.EstadoPrestamo,
                     dbPrestamo.IdUsuario
-                });
+                ));
             }
             return modelPrestamos;
         }
@@ -75,10 +77,10 @@ namespace Biblioteca.Repositories
             var dbPrestamo = _context.Prestamos.FirstOrDefault(e => e.IdPrestamo == prestamo.IdPrestamo);
             if (dbPrestamo != null)
             {
-                dbPrestamo.FechaExtraccion = prestamo.fechaExtraccion;
-                dbPrestamo.FechaDevolucion = prestamo.fechaDevolucion;
-                dbPrestamo.FechaPactada = prestamo.fechaPactada;
-                dbPrestamo.EstadoPrestamo = prestamo.estadoPrestamo;
+                dbPrestamo.FechaExtraccion = prestamo.FechaExtraccion;
+                dbPrestamo.FechaDevolucion = prestamo.FechaDevolucion;
+                dbPrestamo.FechaPactada = prestamo.FechaPactada;
+                dbPrestamo.EstadoPrestamo = prestamo.EstadoPrestamo;
                 dbPrestamo.IdUsuario = prestamo.IdUsuario;
 
                 _context.SaveChanges();

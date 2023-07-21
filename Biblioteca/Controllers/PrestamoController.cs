@@ -28,7 +28,7 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Insertar([FromBody] Prestamo prestamo)
         {
-            var nuevoPrestamo = _prestamoService.InsertarPrestamo(prestamo.idPrestamo, prestamo.fechaExtraccion, prestamo.fechaDevolucion, prestamo.fechaPactada, prestamo.estadoPrestamo, prestamo.idUsuario);
+            var nuevoPrestamo = _prestamoService.InsertarPrestamo(prestamo.IdPrestamo, prestamo.FechaExtraccion, prestamo.FechaDevolucion, prestamo.FechaPactada, prestamo.EstadoPrestamo, prestamo.IdUsuario);
             return Ok(nuevoPrestamo);
         }
 
@@ -41,10 +41,10 @@ namespace Biblioteca.Controllers
             {
                 return NotFound();
             }
-            prestamoActual.FechaExtraccion = prestamoActualizado.fechaExtraccion;
-            prestamoActual.FechaDevolucion = prestamoActualizado.fechaDevolucion;
-            prestamoActual.FechaPactada = prestamoActualizado.fechaPactada;
-            prestamoActual.EstadoPrestamo = prestamoActualizado.estadoPrestamo;
+            prestamoActual.FechaExtraccion = prestamoActualizado.FechaExtraccion;
+            prestamoActual.FechaDevolucion = prestamoActualizado.FechaDevolucion;
+            prestamoActual.FechaPactada = prestamoActualizado.FechaPactada;
+            prestamoActual.EstadoPrestamo = prestamoActualizado.EstadoPrestamo;
             prestamoActual.IdUsuario = prestamoActualizado.IdUsuario;
             _prestamoService.EditarPrestamo(prestamoActual);
             return NoContent();

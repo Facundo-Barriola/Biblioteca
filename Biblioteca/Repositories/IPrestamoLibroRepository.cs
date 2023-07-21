@@ -4,7 +4,7 @@ namespace Biblioteca.Repositories
 {
     public interface IPrestamoLibroRepository
     {
-        PrestamoLibro<PrestamoLibro> GetAll();
+        List<PrestamoLibro> GetAll();
         PrestamoLibro Insertar(PrestamoLibro PrestamoLibro);
         void Editar(PrestamoLibro PrestamoLibro);
         void Borrar(int prestamoLibroId);

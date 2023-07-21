@@ -4,7 +4,7 @@ namespace Biblioteca.Repositories
 {
     public interface ISalonRepository
     {
-        Salon<Salon> GetAll();
+        List<Salon> GetAll();
         Salon Insertar(Salon salon);
         void Editar(Salon salon);
         void Borrar(int salonId);

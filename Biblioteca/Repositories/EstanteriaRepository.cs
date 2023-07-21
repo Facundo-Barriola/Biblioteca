@@ -16,14 +16,16 @@ namespace Biblioteca.Repositories
 
         public Models.Estanteria Insertar(Models.Estanteria estanteria)
         {
-            var modelEstanteria = new Models.Estanteria
+            var modelEstanteria = new Models.Estanteria(estanteria.IdEstanteria, estanteria.DescripcionEstanteria, estanteria.IdSalon);
+            var dbEstanteria = new BibliotecaDB.Estanteria
             {
                 IdEstanteria = estanteria.IdEstanteria,
                 DescripcionEstanteria = estanteria.DescripcionEstanteria,
                 IdSalon = estanteria.IdSalon
             };
 
-            _context.Estanterias.Add(modelEstanteria);
+            modelEstanteria.UpdateIdEstanteria(dbEstanteria.IdEstanteria);
+            _context.Estanterias.Add(dbEstanteria);
             _context.SaveChanges();
             return estanteria;
         }
@@ -51,11 +53,11 @@ namespace Biblioteca.Repositories
             foreach (var dbEstanteria in dbEstanterias)
             {
                 modelEstanterias.Add(new Models.Estanteria
-                {
+                (
                     dbEstanteria.IdEstanteria,
                     dbEstanteria.DescripcionEstanteria,
                     dbEstanteria.IdSalon
-                });
+                ));
             }
             return modelEstanterias;
         }

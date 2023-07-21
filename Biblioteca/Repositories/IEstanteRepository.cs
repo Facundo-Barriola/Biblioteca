@@ -4,7 +4,7 @@ namespace Biblioteca.Repositories
 {
     public interface IEstanteRepository
     {
-        Estante<Estante> GetAll();
+        List<Estante> GetAll();
         Estante Insertar(Estante Estante);
         void Editar(Estante Estante);
         void Borrar(int estanteId);
