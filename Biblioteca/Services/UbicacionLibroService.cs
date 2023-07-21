@@ -58,7 +58,7 @@ namespace Biblioteca.Services
                 throw new Exception("El salón no existe");
             }
 
-            string ubicacion = $"Salón: {salon.Descripcion}, Estantería: {estanteria.Descripcion}, Estante: {estante.Descripcion}, Sección: {seccion.Descripcion}";
+            string ubicacion = $"Salón: {salon.DescripcionSalon}, Estantería: {estanteria.DescripcionEstanteria}, Estante: {estante.DescripcionEstante}, Sección: {seccion.DescripcionSeccion}";
             return ubicacion;
         }
     }

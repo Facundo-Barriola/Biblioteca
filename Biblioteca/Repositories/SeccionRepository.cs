@@ -16,14 +16,16 @@ namespace Biblioteca.Repositories
 
         public Models.Seccion Insertar(Models.Seccion seccion)
         {
-            var modelSeccion = new Models.Seccion
+            var modelSeccion = new Models.Seccion(seccion.IdSeccion, seccion.DescripcionSeccion, seccion.IdEstante);
+            var dbSeccion = new BibliotecaDB.Seccion
             {
                 IdSeccion = seccion.IdSeccion,
                 DescripcionSeccion = seccion.DescripcionSeccion,
                 IdEstante = seccion.IdEstante
             };
 
-            _context.Secciones.Add(modelSeccion);
+            modelSeccion.UpdateIdSeccion(dbSeccion.IdSeccion);
+            _context.Secciones.Add(dbSeccion);
             _context.SaveChanges();
             return seccion;
         }
@@ -51,11 +53,11 @@ namespace Biblioteca.Repositories
             foreach (var dbSeccion in dbSecciones)
             {
                 modelSecciones.Add(new Models.Seccion
-                {
+                (
                     dbSeccion.IdSeccion,
                     dbSeccion.DescripcionSeccion,
                     dbSeccion.IdEstante
-                });
+                ));
             }
             return modelSecciones;
         }

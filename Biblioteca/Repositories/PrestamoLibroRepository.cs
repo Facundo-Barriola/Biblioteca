@@ -16,14 +16,16 @@ namespace Biblioteca.Repositories
 
         public Models.PrestamoLibro Insertar(Models.PrestamoLibro prestamoLibro)
         {
-            var modelPrestamoLibro = new Models.PrestamoLibro
+            var modelPrestamoLibro = new Models.PrestamoLibro(prestamoLibro.IdPrestamoLibro, prestamoLibro.IdPrestamo, prestamoLibro.IdLibro);
+            var dbPrestamoLibro = new BibliotecaDB.PrestamoLibro
             {
                 IdPrestamoLibro = prestamoLibro.IdPrestamoLibro,
                 IdPrestamo = prestamoLibro.IdPrestamo,
                 IdLibro = prestamoLibro.IdLibro
             };
 
-            _context.PrestamoLibros.Add(modelPrestamoLibro);
+            modelPrestamoLibro.UpdateIdPrestamoLibro(dbPrestamoLibro.IdPrestamoLibro);
+            _context.PrestamoLibros.Add(dbPrestamoLibro);
             _context.SaveChanges();
             return prestamoLibro;
         }
@@ -51,11 +53,11 @@ namespace Biblioteca.Repositories
             foreach (var dbPrestamoLibro in dbPrestamoLibros)
             {
                 modelPrestamoLibros.Add(new Models.PrestamoLibro
-                {
+                (
                     dbPrestamoLibro.IdPrestamoLibro,
                     dbPrestamoLibro.IdPrestamo,
                     dbPrestamoLibro.IdLibro
-                });
+                ));
             }
             return modelPrestamoLibros;
         }

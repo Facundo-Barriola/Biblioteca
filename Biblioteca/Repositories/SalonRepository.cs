@@ -16,13 +16,15 @@ namespace Biblioteca.Repositories
 
         public Models.Salon Insertar(Models.Salon salon)
         {
-            var modelSalon = new Models.Salon
+            var modelSalon = new Models.Salon(salon.IdSalon, salon.DescripcionSalon);
+            var dbSalon = new BibliotecaDB.Salon
             {
                 IdSalon = salon.IdSalon,
                 DescripcionSalon = salon.DescripcionSalon
             };
 
-            _bibliotecaContext.Salones.Add(modelSalon);
+            modelSalon.UpdateIdSalon(dbSalon.IdSalon);
+            _bibliotecaContext.Salones.Add(dbSalon);
             _bibliotecaContext.SaveChanges();
             return salon;
         }

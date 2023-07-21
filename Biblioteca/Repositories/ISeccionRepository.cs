@@ -4,7 +4,7 @@ namespace Biblioteca.Repositories
 {
     public interface ISeccionRepository
     {
-        Seccion<Seccion> GetAll();
+        List<Seccion> GetAll();
         Seccion Insertar(Seccion Seccion);
         void Editar(Seccion Seccion);
         void Borrar(int seccionId);
