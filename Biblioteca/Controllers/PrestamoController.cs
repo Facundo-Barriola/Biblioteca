@@ -9,55 +9,53 @@ namespace Biblioteca.Controllers
     [Route("api/prestamos")]
     public class PrestamoController : ControllerBase
     {
-        private readonly PrestamoService _prestamoService;
+        private PrestamoService _prestamoService;
 
         public PrestamoController(PrestamoService prestamoService)
         {
             _prestamoService = prestamoService;
         }
 
+        /// GETALL
         [HttpGet]
-        public ActionResult<IEnumerable<Prestamo>> GetAllPrestamos()
+        public IActionResult GetAll()
         {
             var prestamos = _prestamoService.GetAllPrestamos();
             return Ok(prestamos);
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Prestamo> GetPrestamoById(int id)
+        /// ADD
+        [HttpPost]
+        public IActionResult Insertar([FromBody] Prestamo prestamo)
         {
-            var prestamo = _prestamoService.GetPrestamoById(id);
-            if (prestamo == null)
+            var nuevoPrestamo = _prestamoService.InsertarPrestamo(prestamo.idPrestamo, prestamo.fechaExtraccion, prestamo.fechaDevolucion, prestamo.fechaPactada, prestamo.estadoPrestamo, prestamo.idUsuario);
+            return Ok(nuevoPrestamo);
+        }
+
+        /// UPDATE
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, [FromBody] Prestamo prestamoActualizado)
+        {
+            var prestamoActual = _prestamoService.BuscarPrestamoPorId(id);
+            if (prestamoActual == null || prestamoActualizado == null)
             {
                 return NotFound();
             }
-            return Ok(prestamo);
-        }
-
-        [HttpPost]
-        public IActionResult AddPrestamo([FromBody] Prestamo prestamo)
-        {
-            _prestamoService.AddPrestamo(prestamo.IdPrestamo, prestamo.FechaExtraccion, prestamo.FechaDevolucion, prestamo.FechaPactada, prestamo.EstadoPrestamo, prestamo.IdUsuario);
-            return CreatedAtAction(nameof(GetPrestamoById), new { id = prestamo.IdPrestamo }, prestamo);
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult UpdatePrestamo(int id, [FromBody] Prestamo prestamo)
-        {
-            if (id != prestamo.IdPrestamo)
-            {
-                return BadRequest();
-            }
-
-            _prestamoService.UpdatePrestamo(prestamo.IdPrestamo, prestamo.FechaExtraccion, prestamo.FechaDevolucion, prestamo.FechaPactada, prestamo.EstadoPrestamo, prestamo.IdUsuario);
+            prestamoActual.FechaExtraccion = prestamoActualizado.fechaExtraccion;
+            prestamoActual.FechaDevolucion = prestamoActualizado.fechaDevolucion;
+            prestamoActual.FechaPactada = prestamoActualizado.fechaPactada;
+            prestamoActual.EstadoPrestamo = prestamoActualizado.estadoPrestamo;
+            prestamoActual.IdUsuario = prestamoActualizado.IdUsuario;
+            _prestamoService.EditarPrestamo(prestamoActual);
             return NoContent();
         }
 
+        /// DELETE
         [HttpDelete("{id}")]
-        public IActionResult DeletePrestamo(int id)
+        public IActionResult Borrar(int id)
         {
-            _prestamoService.DeletePrestamo(id);
-            return NoContent();
+            _prestamoService.BorrarPrestamo(id);
+            return Ok();
         }
     }
 }
