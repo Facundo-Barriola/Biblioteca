@@ -1,6 +1,6 @@
-﻿using Biblioteca.Models;
+﻿using BibliotecaDB;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using Microsoft.Identity.Client;
 using System.Linq;
 
 namespace Biblioteca.Repositories
@@ -14,43 +14,76 @@ namespace Biblioteca.Repositories
             _context = context;
         }
 
-        /// GetById y GetAll con sintáxis similar a SQL implementado con LINQ
-        /// SaveChanges es un método que no se declara en BibliotecaContext porque ya viene incluido con Entity Framework Core.
-
-        /// Incluir a "IdLibroNavigation" y "IdPrestamoNavigation" permite que al obtener un PrestamoLibro, también se lean las referencias a las entidades Libro y Prestamo asociadas.
-
-        public PrestamoLibro GetById(int id)
+        public Models.PrestamoLibro Insertar(Models.PrestamoLibro prestamoLibro)
         {
-            return _context.PrestamoLibros
-                .Include(pl => pl.IdLibroNavigation)
-                .Include(pl => pl.IdPrestamoNavigation)
-                .FirstOrDefault(pl => pl.IdPrestamoLibro == id);
-        }
+            var modelPrestamoLibro = new Models.PrestamoLibro
+            {
+                IdPrestamoLibro = prestamoLibro.IdPrestamoLibro,
+                IdPrestamo = prestamoLibro.IdPrestamo,
+                IdLibro = prestamoLibro.IdLibro
+            };
 
-        public IEnumerable<PrestamoLibro> GetAll()
-        {
-            return _context.PrestamoLibros
-                .Include(pl => pl.IdLibroNavigation)
-                .Include(pl => pl.IdPrestamoNavigation)
-                .ToList();
-        }
-
-        public void Add(PrestamoLibro prestamoLibro)
-        {
-            _context.PrestamoLibros.Add(prestamoLibro);
+            _context.PrestamoLibros.Add(modelPrestamoLibro);
             _context.SaveChanges();
+            return prestamoLibro;
         }
 
-        public void Update(PrestamoLibro prestamoLibro)
+        public Models.PrestamoLibro BuscarPorId(int id)
         {
-            _context.PrestamoLibros.Update(prestamoLibro);
-            _context.SaveChanges();
+            var dbPrestamoLibro = _context.PrestamoLibros.FirstOrDefault(e => e.IdPrestamoLibro == id);
+            if (dbPrestamoLibro != null)
+            {
+                var prestamoLibro = new Models.PrestamoLibro
+                (
+                    dbPrestamoLibro.IdPrestamoLibro,
+                    dbPrestamoLibro.IdPrestamo,
+                    dbPrestamoLibro.IdLibro
+                );
+                return prestamoLibro;
+            }
+            return null;
         }
 
-        public void Delete(PrestamoLibro prestamoLibro)
+        public List<Models.PrestamoLibro> GetAll()
         {
-            _context.PrestamoLibros.Remove(prestamoLibro);
-            _context.SaveChanges();
+            var dbPrestamoLibros = _context.PrestamoLibros.ToList();
+            var modelPrestamoLibros = new List<Models.PrestamoLibro>();
+            foreach (var dbPrestamoLibro in dbPrestamoLibros)
+            {
+                modelPrestamoLibros.Add(new Models.PrestamoLibro
+                {
+                    dbPrestamoLibro.IdPrestamoLibro,
+                    dbPrestamoLibro.IdPrestamo,
+                    dbPrestamoLibro.IdLibro
+                });
+            }
+            return modelPrestamoLibros;
         }
+
+        public void Editar(Models.PrestamoLibro prestamoLibro)
+        {
+            var dbPrestamoLibro = _context.PrestamoLibros.FirstOrDefault(e => e.IdPrestamoLibro == prestamoLibro.IdPrestamoLibro);
+            if (dbPrestamoLibro != null)
+            {
+                dbPrestamoLibro.IdPrestamo = prestamoLibro.IdPrestamo;
+                dbPrestamoLibro.IdLibro = prestamoLibro.IdLibro;
+                _context.SaveChanges();
+            }
+        }
+
+        public void Borrar(int prestamoLibroId)
+        {
+            PrestamoLibro prestamoLibro = _context.PrestamoLibros.Find(prestamoLibroId);
+            if (prestamoLibro != null)
+            {
+                _context.PrestamoLibros.Remove(prestamoLibro);
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("No se encontró el prestamoLibro con el ID especificado");
+            }
+        }
+
     }
 }
