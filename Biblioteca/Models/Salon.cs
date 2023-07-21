@@ -7,7 +7,7 @@ public class Salon
 {
     public int IdSalon { get; set; }
     public string DescripcionSalon { get; set; } = null!;
-    public ICollection<Estanteria> Estanterias { get; set; } = new List<Estanteria>();
+    private ICollection<Estanteria> Estanterias { get; set; } = new List<Estanteria>();
 
     public Salon(int idSalon, string descripcionSalon)
     {

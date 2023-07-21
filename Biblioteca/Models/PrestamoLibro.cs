@@ -14,4 +14,26 @@ public class PrestamoLibro
     private Libro IdLibroNavigation { get; set; } = null!;
 
     private Prestamo IdPrestamoNavigation { get; set; } = null!;
+
+    public PrestamoLibro(int idPrestamoLibro, int idPrestamo, int idLibro)
+    {
+        IdPrestamoLibro = idPrestamoLibro;
+        IdPrestamo = idPrestamo;
+        IdLibro = idLibro;
+    }
+
+    public void UpdateIdPrestamoLibro(int newIdPrestamoLibro)
+    {
+        IdPrestamoLibro = newIdPrestamoLibro;
+    }
+
+    public void UpdateIdPrestamo(int newIdPrestamo)
+    {
+        IdPrestamo = newIdPrestamo;
+    }
+
+    public void UpdateIdLibro(int newIdLibro)
+    {
+        IdLibro = newIdLibro;
+    }
 }
