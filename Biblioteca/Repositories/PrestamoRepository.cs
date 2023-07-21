@@ -75,7 +75,6 @@ namespace Biblioteca.Repositories
             var dbPrestamo = _context.Prestamos.FirstOrDefault(e => e.IdPrestamo == prestamo.IdPrestamo);
             if (dbPrestamo != null)
             {
-                dbPrestamo.IdPrestamo = prestamo.IdPrestamo;
                 dbPrestamo.FechaExtraccion = prestamo.fechaExtraccion;
                 dbPrestamo.FechaDevolucion = prestamo.fechaDevolucion;
                 dbPrestamo.FechaPactada = prestamo.fechaPactada;
