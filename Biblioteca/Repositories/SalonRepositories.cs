@@ -1,88 +1,84 @@
 ﻿using BibliotecaDB;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+using Microsoft.Identity.Client;
 using System.Linq;
 
 namespace Biblioteca.Repositories
 {
     public class SalonRepository : ISalonRepository
     {
-        private BibliotecaContext _context;
+        private BibliotecaContext _bibliotecaContext;
 
         public SalonRepository(BibliotecaContext context)
         {
-            _context = context;
+            _bibliotecaContext = context;
         }
 
-        ///GetById y GetAll con sintáxis similar a SQL implementado con LINQ <summary>
-        /// GetById y GetAll con sintáxis similar a SQL implementado con LINQ
-        /// SaveChanges es un método que no se declara en BibliotecaContext porque ya viene incluído con Entity Framework Core.
-
-        public Models.Salon GetById(int id)
+        public Models.Salon Insertar(Models.Salon salon)
         {
-            var dbSalon = _context.Salones.FirstOrDefault(s => s.IdSalon == id);
-            if (dbSalon != null) 
+            var modelSalon = new Models.Salon
             {
-                var salon = new Models.Salon(
-                    dbSalon.IdSalon,
-                    dbSalon.DescripcionSalon
-                    );
-                return salon;
+                IdSalon = salon.IdSalon,
+                DescripcionSalon = salon.DescripcionSalon
+            };
+
+            _bibliotecaContext.Salones.Add(modelSalon);
+            _bibliotecaContext.SaveChanges();
+            return salon;
+        }
+
+        public void Borrar(int salonId)
+        {
+            Salon salon = _bibliotecaContext.Salones.Find(salonId);
+            if (salon != null)
+            {
+                _bibliotecaContext.Salones.Remove(salon);
+                _bibliotecaContext.SaveChanges();
             }
-            return null;
+            else
+            {
+                throw new Exception("No se encontró el salón con el ID especificado");
+            }
         }
 
         public List<Models.Salon> GetAll()
         {
+            var dbSalones = _bibliotecaContext.Salones.ToList();
             var modelSalones = new List<Models.Salon>();
-            var dbSalones = _context.Salones.ToList();
-            foreach (var dbSalon in dbSalones) 
+            foreach (var dbSalon in dbSalones)
             {
                 modelSalones.Add(new Models.Salon
-                    (
-                        dbSalon.IdSalon,
-                        dbSalon.DescripcionSalon
-                    )); 
+                (
+                    dbSalon.IdSalon,
+                    dbSalon.DescripcionSalon,
+                    ));
             }
             return modelSalones;
         }
 
-        public Models.Salon Add(Models.Salon salon)
+        public void Editar(Models.Salon salon)
         {
-            var modelSalon = new Models.Salon(salon.IdSalon, salon.DescripcionSalon);
-            var dbSalon = new BibliotecaDB.Salon
-            { 
-                IdSalon = salon.IdSalon,
-                DescripcionSalon = salon.DescripcionSalon
-            };
-            modelSalon.UpdateIdSalon(dbSalon.IdSalon);
-            _context.Salones.Add(dbSalon);
-            _context.SaveChanges();
-            return salon;
+            var dbSalon = _bibliotecaContext.Salones.FirstOrDefault(s => s.IdSalon == salon.IdSalon);
+            if (dbSalon != null)
+            {
+                dbSalon.DescripcionSalon = salon.DescripcionSalon;
+                _bibliotecaContext.SaveChanges();
+            }
         }
 
-        public Models.Salon Update(Models.Salon salon)
+        public Models.Salon BuscarPorId(int idSalon)
         {
-            var dbSalon = _context.Salones.FirstOrDefault(s => s.IdSalon == salon.IdSalon);
-            if (dbSalon != null) 
+            var dbSalon = _bibliotecaContext.Salones.FirstOrDefault(s => s.IdSalon == idSalon);
+            if (dbSalon != null)
             {
-                dbSalon.IdSalon = salon.IdSalon;
-                dbSalon.DescripcionSalon = salon.DescripcionSalon;
-
-                _context.SaveChanges();
+                var salon = new Models.Salon
+                (
+                    dbSalon.IdSalon,
+                    dbSalon.DescripcionSalon
+                );
                 return salon;
             }
             return null;
-        }
-
-        public void Delete(Models.Salon salon)
-        {
-            var dbSalon = _context.Salones.FirstOrDefault(s => s.IdSalon == salon.IdSalon);
-            if (dbSalon != null) 
-            {
-                _context.Salones.Remove(dbSalon); 
-                _context.SaveChanges();
-            }
         }
     }
 }
