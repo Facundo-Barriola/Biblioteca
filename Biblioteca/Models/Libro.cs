@@ -69,14 +69,7 @@ public class Libro
     }
     public void UpdateTitulo(string newTitulo)
     {
-        if (newTitulo != null)
-        {
-            Titulo = newTitulo;
-        }
-        else
-        {
-            throw new ArgumentNullException(nameof(newTitulo), "El título no puede ser nulo.");
-        }
+        Titulo = newTitulo;
     }
 
     public void UpdateSinopsis(string newSinopsis) 
@@ -86,14 +79,7 @@ public class Libro
 
     public void UpdatePuntaje(int newPuntaje)
     {
-        if (newPuntaje >= 0 && newPuntaje <= 5)
-        {
-            PuntajeCritica = newPuntaje;
-        }
-        else
-        {
-            throw new ArgumentOutOfRangeException(nameof(newPuntaje), "El puntaje de crítica debe estar entre 0 y 5.");
-        }
+        PuntajeCritica = newPuntaje;
     }
 
     public void UpdateEstado(int newEstado) 
