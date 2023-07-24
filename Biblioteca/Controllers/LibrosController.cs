@@ -60,8 +60,8 @@ namespace Biblioteca.Controllers
         [HttpGet("{idLibro}")]
         public IActionResult UbicacionLibro(int idLibro) 
         {
-            string ubicacion = _libroService.UbicacionLibro(idLibro);
-            if (ubicacion != null)
+            List<string> ubicacion = _libroService.UbicacionLibro(idLibro);
+            if (ubicacion.Count > 0)
             {
                 return Ok(ubicacion);
             }

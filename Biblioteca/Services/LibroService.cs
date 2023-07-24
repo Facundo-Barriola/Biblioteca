@@ -48,33 +48,27 @@ namespace Biblioteca.Services
             return _libroRepository.BuscarPorId(idLibro);
         }
 
-        public string UbicacionLibro(int idLibro) 
+        public List<string> UbicacionLibro(int idLibro) 
         {
             var libroBuscado = _libroRepository.BuscarPorId(idLibro);
 
             if(libroBuscado != null) 
             {
-                var ubicacionLibro = (from libro in _libroRepository.GetAll()
+                var ubicacionesLibro = (from libro in _libroRepository.GetAll()
                                       join seccion in _seccionRepository.GetAll() on libro.IdSeccion equals seccion.IdSeccion
                                       join estante in _estanteRepository.GetAll() on seccion.IdEstante equals estante.IdEstante
                                       join estanteria in _estanteriaRepository.GetAll() on estante.IdEstanteria equals estanteria.IdEstanteria
                                       join salon in _salonRepository.GetAll() on estanteria.IdSalon equals salon.IdSalon
                                       where libro.IdLibro == idLibro
-                                      select new
-                                      {
-                                          Salon = salon.DescripcionSalon,
-                                          Estanteria = estanteria.DescripcionEstanteria,
-                                          Estante = estante.DescripcionEstante,
-                                          Seccion = seccion.DescripcionSeccion
-                                      }).FirstOrDefault();
+                                      select $"Salon: {salon.DescripcionSalon}, Estanteria: {estanteria.DescripcionEstanteria}, " +
+                                      $"Estante: {estante.DescripcionEstante}, Seccion: {seccion.DescripcionSeccion}").ToList();
 
-                if (ubicacionLibro != null) 
+                if (ubicacionesLibro.Count > 0) 
                 {
-                    return $"Ubicacion del libro: {ubicacionLibro.Salon}, {ubicacionLibro.Estanteria}, {ubicacionLibro.Estante}," +
-                        $" {ubicacionLibro.Seccion}";
+                    return ubicacionesLibro;
                 }
             }
-            return "Libro no encontrado";
+            return new List<string> {"Libro no encontrado"};
         }
     }
 }
