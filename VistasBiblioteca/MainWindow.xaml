@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="Biblioteca" Height="450" Width="800">
     <Grid>
-        <Label Content="Biblioteca" />
-
-
+        <Frame x:Name="MainFrame" Source="MenuLibros.xaml"></Frame>
     </Grid>
 </Window>
