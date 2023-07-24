@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="Biblioteca" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="MainFrame" Source="MenuLibros.xaml"></Frame>
+        <TabControl>
+            <TabItem Header="Administración de Libros">
+                <Frame x:Name="MainFrame" Source="MenuLibros.xaml"></Frame>
+            </TabItem>
+            <TabItem Header="Ubicación Libros">
+                <Label>Biblioteca</Label>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

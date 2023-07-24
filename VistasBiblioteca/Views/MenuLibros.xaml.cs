@@ -28,11 +28,5 @@ namespace VistasBiblioteca
             InitializeComponent();
         }
 
-        private void refresh() 
-        {
-            //List<Biblioteca.Models.Libro> listaLibros = new list<Biblioteca.Models.Libro>
-            //using(Biblioteca.Models.WPFCrudEntities db = new )
-
-        }
     }
 }
