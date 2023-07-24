@@ -1,0 +1,29 @@
+﻿<Page x:Class="VistasBiblioteca.MenuLibros"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VistasBiblioteca"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuLibros">
+
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Button Grid.Column="0" Grid.Row="0" Width="150" HorizontalAlignment="Right">Agregegar Libro</Button>
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Margin="-8,0,8,0">
+            <DataGridTextColumn Header="Titulo"></DataGridTextColumn>
+            <DataGridTextColumn Header="Sinopsis"></DataGridTextColumn>
+            <DataGridTextColumn Header="PuntajeCritica"></DataGridTextColumn>
+            <DataGridTextColumn Header="Estado"></DataGridTextColumn>
+            <DataGridTextColumn Header="Disponibilidad"></DataGridTextColumn>
+        </DataGrid>
+    </Grid>
+</Page>
