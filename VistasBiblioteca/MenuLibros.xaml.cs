@@ -10,8 +10,11 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Biblioteca.Models;
+
 
 namespace VistasBiblioteca
 {
@@ -23,6 +26,13 @@ namespace VistasBiblioteca
         public MenuLibros()
         {
             InitializeComponent();
+        }
+
+        private void refresh() 
+        {
+            //List<Biblioteca.Models.Libro> listaLibros = new list<Biblioteca.Models.Libro>
+            //using(Biblioteca.Models.WPFCrudEntities db = new )
+
         }
     }
 }
