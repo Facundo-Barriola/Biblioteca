@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca", "Biblioteca\Bi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BibliotecaDB", "BibliotecaDB\BibliotecaDB.csproj", "{D600D175-4D75-4A5B-8BE1-8D0325D79E20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VistasBiblioteca", "VistasBiblioteca\VistasBiblioteca.csproj", "{A2B9E271-056D-4A39-B154-9DAA5CFB38AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D600D175-4D75-4A5B-8BE1-8D0325D79E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D600D175-4D75-4A5B-8BE1-8D0325D79E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D600D175-4D75-4A5B-8BE1-8D0325D79E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B9E271-056D-4A39-B154-9DAA5CFB38AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B9E271-056D-4A39-B154-9DAA5CFB38AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B9E271-056D-4A39-B154-9DAA5CFB38AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B9E271-056D-4A39-B154-9DAA5CFB38AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
