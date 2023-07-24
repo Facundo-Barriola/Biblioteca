@@ -75,6 +75,7 @@
     <Compile Include="MenuLibros.xaml.cs">
       <DependentUpon>MenuLibros.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Libro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -101,7 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
