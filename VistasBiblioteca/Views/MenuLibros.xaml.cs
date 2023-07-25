@@ -19,9 +19,6 @@ using VistasBiblioteca.ViewModels;
 
 namespace VistasBiblioteca
 {
-    /// <summary>
-    /// Lógica de interacción para MenuLibros.xaml
-    /// </summary>
     public partial class MenuLibros : Page
     {
         public MenuLibros()
@@ -33,7 +30,6 @@ namespace VistasBiblioteca
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
