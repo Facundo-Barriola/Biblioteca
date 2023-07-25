@@ -1,0 +1,22 @@
+﻿<Page x:Class="VistasBiblioteca.Views.UbicacionLibro"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VistasBiblioteca.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UbicacionLibro">
+    <ListView Name="listView"  Grid.Row="1" ItemsSource="{Binding UbicacionLibros}">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Titulo" DisplayMemberBinding="{Binding Titulo}"/>
+                <GridViewColumn Header="Salon" DisplayMemberBinding="{Binding DescripcionSalon}"/>
+                <GridViewColumn Header="Estanteria" DisplayMemberBinding="{Binding DescripcionEstanteria}"/>
+                <GridViewColumn Header="Estante" DisplayMemberBinding="{Binding DescripcionEstante}"/>
+                <GridViewColumn Header="Seccion" DisplayMemberBinding="{Binding DescripcionSeccion}"/>
+            </GridView>
+        </ListView.View>
+    </ListView>
+
+</Page>
