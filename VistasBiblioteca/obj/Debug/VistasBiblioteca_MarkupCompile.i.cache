@@ -9,12 +9,21 @@ VistasBiblioteca
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\App.xaml
 2428257933
 
 91777982374
 13-1310406943
 Views\MainWindow.xaml;Views\MenuLibros.xaml;
+=======
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\App.xaml
+3-1560352502
+
+11102066589
+14171849785
+Views\MainWindow.xaml;Views\MenuLibros.xaml;Views\UbicacionLibro.xaml;
+>>>>>>> FB_MVVM
 
 True
 

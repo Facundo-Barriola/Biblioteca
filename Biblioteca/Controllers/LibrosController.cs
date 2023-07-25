@@ -57,11 +57,11 @@ namespace Biblioteca.Controllers
             return NoContent();
         }
 
-        [HttpGet("{idLibro}")]
-        public IActionResult UbicacionLibro(int idLibro) 
+        [HttpGet("ubicacion")]
+        public IActionResult UbicacionLibro() 
         {
-            string ubicacion = _libroService.UbicacionLibro(idLibro);
-            if (ubicacion != null)
+            List<UbicacionLibro> ubicacion = _libroService.UbicacionLibro();
+            if (ubicacion.Count > 0)
             {
                 return Ok(ubicacion);
             }
