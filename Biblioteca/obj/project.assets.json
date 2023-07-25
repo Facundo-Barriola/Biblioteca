@@ -3955,19 +3955,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\facub\\.nuget\\packages\\": {}
+    "C:\\Users\\Tuvi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\Biblioteca\\Biblioteca.csproj",
+      "projectUniqueName": "C:\\Users\\Tuvi\\source\\repos\\MiWPF\\Biblioteca\\Biblioteca.csproj",
       "projectName": "Biblioteca",
-      "projectPath": "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\Biblioteca\\Biblioteca.csproj",
-      "packagesPath": "C:\\Users\\facub\\.nuget\\packages\\",
-      "outputPath": "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\Biblioteca\\obj\\",
+      "projectPath": "C:\\Users\\Tuvi\\source\\repos\\MiWPF\\Biblioteca\\Biblioteca.csproj",
+      "packagesPath": "C:\\Users\\Tuvi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tuvi\\source\\repos\\MiWPF\\Biblioteca\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\facub\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tuvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3982,8 +3982,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\BibliotecaDB\\BibliotecaDB.csproj": {
-              "projectPath": "C:\\Programación\\C#\\Biblioteca\\Biblioteca\\BibliotecaDB\\BibliotecaDB.csproj"
+            "C:\\Users\\Tuvi\\source\\repos\\MiWPF\\BibliotecaDB\\BibliotecaDB.csproj": {
+              "projectPath": "C:\\Users\\Tuvi\\source\\repos\\MiWPF\\BibliotecaDB\\BibliotecaDB.csproj"
             }
           }
         }
