@@ -16,5 +16,12 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" Grid.Column="0" Grid.Row="1">
+            <DataGridTextColumn Header="Titulo"></DataGridTextColumn>
+            <DataGridTextColumn Header="DescSalon"></DataGridTextColumn>
+            <DataGridTextColumn Header="DescEstanteria"></DataGridTextColumn>
+            <DataGridTextColumn Header="DescEstante"></DataGridTextColumn>
+            <DataGridTextColumn Header="DescSalon"></DataGridTextColumn>
+        </DataGrid>
     </Grid>
 </Page>
