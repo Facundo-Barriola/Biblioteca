@@ -54,6 +54,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\UbicacionLibroViewModel.cs" />
     <Compile Include="Views\UbicacionLibro.xaml.cs">
       <DependentUpon>UbicacionLibro.xaml</DependentUpon>
     </Compile>
@@ -109,8 +110,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
