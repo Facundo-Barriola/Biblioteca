@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VistasBiblioteca.ViewModels;
 
 
 
@@ -26,7 +27,13 @@ namespace VistasBiblioteca
         public MenuLibros()
         {
             InitializeComponent();
+            //los datos de MenuLibros se obtienen de MenuLibrosViewModel
+            this.DataContext = new MenuLibrosViewModel();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

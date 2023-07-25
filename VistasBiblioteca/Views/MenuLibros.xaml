@@ -17,7 +17,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
-        <Button Grid.Column="0" Grid.Row="0" Width="150" HorizontalAlignment="Right">Agregegar Libro</Button>
+        <Button Grid.Column="0" Grid.Row="0" Width="150" HorizontalAlignment="Right" Click="Button_Click">Agregar Libro</Button>
         <DataGrid AutoGenerateColumns="True" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Margin="-8,0,8,0">
             <DataGridTextColumn Header="Titulo"></DataGridTextColumn>
             <DataGridTextColumn Header="Sinopsis"></DataGridTextColumn>
