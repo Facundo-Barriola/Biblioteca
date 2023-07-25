@@ -23,7 +23,7 @@ namespace VistasBiblioteca.ViewModels
             set 
             {
                 _ubicacionLibroModel = value;
-                OnPropertyChanged("ubicacionLirboModel");
+                OnPropertyChanged("ubicacionLibroModel");
             }
         }
 

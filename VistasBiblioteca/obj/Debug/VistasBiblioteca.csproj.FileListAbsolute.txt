@@ -16,3 +16,8 @@ C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\VistasBibli
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\VistasBiblioteca.csproj.CoreCompileInputs.cache
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\VistasBiblioteca.exe
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\VistasBiblioteca.pdb
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\bin\Debug\Newtonsoft.Json.dll
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\bin\Debug\Newtonsoft.Json.xml
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\Views\UbicacionLibro.g.cs
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\Views\UbicacionLibro.baml
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\VistasBiblioteca.csproj.CopyComplete
