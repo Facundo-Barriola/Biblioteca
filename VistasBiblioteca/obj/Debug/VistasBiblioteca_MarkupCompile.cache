@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\
 VistasBiblioteca
 none
 false
 DEBUG;TRACE
-C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\App.xaml
-3-1560352502
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\App.xaml
+4-129499885
 
-10-2110812089
-14171849785
-Views\MainWindow.xaml;Views\MenuLibros.xaml;Views\UbicacionLibro.xaml;
+121333326245
+13-1310406943
+Views\AgregarLibroForm.xaml;Views\MainWindow.xaml;Views\MenuLibros.xaml;Views\UbicacionLibro.xaml;
 
-False
+True
 

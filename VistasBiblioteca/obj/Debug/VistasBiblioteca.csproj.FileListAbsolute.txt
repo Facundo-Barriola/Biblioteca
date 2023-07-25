@@ -21,3 +21,14 @@ C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\bin\Debug\Newtonsoft.
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\Views\UbicacionLibro.g.cs
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\Views\UbicacionLibro.baml
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\VistasBiblioteca.csproj.CopyComplete
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca.csproj.AssemblyReference.cache
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\Views\AgregarLibroForm.g.cs
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\Views\MainWindow.g.cs
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\Views\MenuLibros.g.cs
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\Views\UbicacionLibro.g.cs
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\App.g.cs
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca_MarkupCompile.cache
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca_MarkupCompile.lref
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca.exe
+C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca.pdb
