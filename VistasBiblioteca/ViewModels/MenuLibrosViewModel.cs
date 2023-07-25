@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Markup;
 using Newtonsoft.Json.Serialization;
 using VistasBiblioteca.Models;
+using System.Collections.Generic;
 
 namespace VistasBiblioteca.ViewModels
 {
@@ -162,7 +163,7 @@ namespace VistasBiblioteca.ViewModels
             return SelectedLibro != null;
         }
 
-        private async void LoadLibros()
+        public async void LoadLibros()
         {
             try
             {
@@ -180,6 +181,8 @@ namespace VistasBiblioteca.ViewModels
                 Console.WriteLine($"Error al cargar los libros: {ex.Message}");
             }
         }
+
+        public List<string> Estados { get; } = new List<string> { "Nuevo", "Deteriorado", "Muy deteriorado" };
 
 
     }

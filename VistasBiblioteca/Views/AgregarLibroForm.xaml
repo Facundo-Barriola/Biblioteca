@@ -1,0 +1,42 @@
+﻿<Window x:Class="VistasBiblioteca.AgregarLibroForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VistasBiblioteca"
+        mc:Ignorable="d"
+        Title="Agregar Libro" Height="300" Width="400">
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label Grid.Row="0">Titulo:</Label>
+            <TextBox Grid.Row="0" Text="{Binding LibroModel.Titulo}" />
+
+            <Label Grid.Row="1">Sinopsis:</Label>
+            <TextBox Grid.Row="1" Text="{Binding LibroModel.Sinopsis}" />
+
+            <Label Grid.Row="2">Puntaje Crítica:</Label>
+            <TextBox Grid.Row="2" Text="{Binding LibroModel.PuntajeCritica}" />
+
+            <Label Grid.Row="3">Estado:</Label>
+            <ComboBox Grid.Row="3" ItemsSource="{Binding Estados}" SelectedItem="{Binding LibroModel.Estado}" />
+
+            <Label Grid.Row="4">Disponibilidad:</Label>
+            <CheckBox Grid.Row="4" IsChecked="{Binding LibroModel.Disponibilidad}" />
+
+            <Label Grid.Row="5">Id Sección:</Label>
+            <TextBox Grid.Row="5" Text="{Binding LibroModel.IdSeccion}" />
+
+            <Button Grid.Row="6" Content="Crear" Command="{Binding AddLibroCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
