@@ -12,7 +12,7 @@
                 <Frame x:Name="MainFrame" Source="MenuLibros.xaml"></Frame>
             </TabItem>
             <TabItem Header="Ubicación Libros">
-                <Label>Biblioteca</Label>
+                <Frame x:Name="UbiacionFrame" Source="UbicacionLibro.xaml"></Frame>
             </TabItem>
         </TabControl>
     </Grid>
