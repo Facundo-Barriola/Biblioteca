@@ -4,26 +4,29 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:VistasBiblioteca"
+      xmlns:viewModel="clr-namespace:VistasBiblioteca.ViewModels"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MenuLibros">
-
-    <Grid ShowGridLines="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Button Command="{Binding AddLibroCommand, ElementName=MenuLibrosPage}" Grid.Row="0" Width="150" HorizontalAlignment="Right" Click="Button_Click">Agregar Libro</Button>
 
-        <Button Command="{Binding AddLibroCommand, ElementName=MenuLibrosPage}" Grid.Column="0" Grid.Row="0" Width="150" HorizontalAlignment="Right" Click="Button_Click">Agregar Libro</Button>
-        <DataGrid AutoGenerateColumns="True" IsReadOnly="True" Grid.Column="0" Grid.Row="1" Margin="-8,0,8,0">
-            <DataGridTextColumn Header="Titulo"></DataGridTextColumn>
-            <DataGridTextColumn Header="Sinopsis"></DataGridTextColumn>
-            <DataGridTextColumn Header="PuntajeCritica"></DataGridTextColumn>
-            <DataGridTextColumn Header="Estado"></DataGridTextColumn>
-            <DataGridTextColumn Header="Disponibilidad"></DataGridTextColumn>
-        </DataGrid>
+        <ListView Name="listView1" Grid.Row="1" Margin="8,0" ItemsSource="{Binding Libros}" SelectionChanged="listView1_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Titulo" DisplayMemberBinding="{Binding Titulo}"/>
+                    <GridViewColumn Header="Sinopsis" DisplayMemberBinding="{Binding Sinopsis}"/>
+                    <GridViewColumn Header="PuntajeCritica" DisplayMemberBinding="{Binding PuntajeCritica}"/>
+                    <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding Estado}"/>
+                    <GridViewColumn Header="Disponibilidad" DisplayMemberBinding="{Binding Disponibilidad}"/>
+                    <GridViewColumn Header="IdSeccion" DisplayMemberBinding="{Binding IdSeccion}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
+
 </Page>
