@@ -10,12 +10,16 @@ none
 false
 DEBUG;TRACE
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3e456dca175a83c2c2bd4113d8a36e265b32222a
 C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\App.xaml
 2428257933
 
 91777982374
 13-1310406943
 Views\MainWindow.xaml;Views\MenuLibros.xaml;
+<<<<<<< HEAD
 =======
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\App.xaml
 3-1560352502
@@ -24,6 +28,8 @@ C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\App.xaml
 14171849785
 Views\MainWindow.xaml;Views\MenuLibros.xaml;Views\UbicacionLibro.xaml;
 >>>>>>> FB_MVVM
+=======
+>>>>>>> 3e456dca175a83c2c2bd4113d8a36e265b32222a
 
 True
 

@@ -1,6 +1,7 @@
 ﻿
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 FC:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\Views\MainWindow.xaml;;
 FC:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\Views\MenuLibros.xaml;;
 =======
@@ -8,4 +9,8 @@ FC:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\Views\MainWindow.xam
 FC:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\Views\MenuLibros.xaml;;
 FC:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\Views\UbicacionLibro.xaml;;
 >>>>>>> FB_MVVM
+=======
+FC:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\Views\MainWindow.xaml;;
+FC:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\Views\MenuLibros.xaml;;
+>>>>>>> 3e456dca175a83c2c2bd4113d8a36e265b32222a
 
