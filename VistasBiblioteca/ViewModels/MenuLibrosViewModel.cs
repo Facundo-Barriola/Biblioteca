@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Http;
-using VistasBiblioteca.Models;
 using Newtonsoft.Json;
 using System.Windows.Input;
 using System.Text;
@@ -9,8 +8,9 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 using Newtonsoft.Json.Serialization;
+using VistasBiblioteca.Models;
 
-namespace VistasBiblioteca.ViewLibros
+namespace VistasBiblioteca.ViewModels
 {
     public class MenuLibrosViewModel : INotifyPropertyChanged
     {
@@ -37,13 +37,28 @@ namespace VistasBiblioteca.ViewLibros
             }
         }
 
+        private Libro _selectedLibro;
+        public Libro SelectedLibro
+        {
+            get { return _selectedLibro; }
+            set
+            {
+                _selectedLibro = value;
+                OnPropertyChanged("SelectedLibro");
+            }
+        }
+
         public ICommand AddLibroCommand { get; set; }
+        public ICommand EditLibroCommand { get; set; }
+        public ICommand DeleteLibroCommand { get; set; }
 
 
         public MenuLibrosViewModel()
         {
             LoadLibros();
             AddLibroCommand = new RelayCommand(AddLibro, CanAddLibro);
+            EditLibroCommand = new RelayCommand(EditLibro, CanEditLibro);
+            DeleteLibroCommand = new RelayCommand(DeleteLibro, CanDeleteLibro);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,23 +70,34 @@ namespace VistasBiblioteca.ViewLibros
 
         private async void AddLibro()
         {
-            HttpClient client = new HttpClient();
-            var libro = new Libro
+            try
             {
-                Titulo = LibroModel,
-                IdLibro = idLibro,
-                Sinopsis = sinopsis,
-                PuntajeCritica = puntajeCritica,
-                Estado = estado,
-                Disponibilidad = disponibilidad,
-                IdSeccion = idSeccion
-            };
-            var jsonString = JsonConvert.SerializeObject(libro,
-                new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-            var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            await client.PostAsync("https://localhost:7053/add-libro", content);
-            LibroModel = string.Empty;
-            LoadLibros();
+                HttpClient client = new HttpClient();
+                var libro = new Libro
+                {
+                    Titulo = Titulo,
+                    Sinopsis = Sinopsis,
+                    PuntajeCritica = PuntajeCritica,
+                    Estado = Estado,
+                    Disponibilidad = Disponibilidad,
+                    IdSeccion = IdSeccion
+                };
+                var jsonString = JsonConvert.SerializeObject(libro,
+                    new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                await client.PostAsync("https://localhost:7053/add-libro", content);
+                Titulo = string.Empty;
+                Sinopsis = string.Empty;
+                PuntajeCritica = 0;
+                Estado = 0;
+                Disponibilidad = false;
+                IdSeccion = 0;
+                LoadLibros();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al agregar el libro: {ex.Message}");
+            }
         }
 
         private bool CanAddLibro()
@@ -79,17 +105,83 @@ namespace VistasBiblioteca.ViewLibros
             return !string.IsNullOrWhiteSpace(LibroModel);
         }
 
-        private async void LoadLibros()
+        private async void EditLibro()
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7053/api/Libros");
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var jsonString = await response.Content.ReadAsStringAsync();
-                Libros = JsonConvert.DeserializeObject<ObservableCollection<Libro>>(jsonString);
+                HttpClient client = new HttpClient();
+                var libro = new Libro
+                {
+                    IdLibro = SelectedLibro.IdLibro,
+                    Titulo = Titulo,
+                    Sinopsis = Sinopsis,
+                    PuntajeCritica = PuntajeCritica,
+                    Estado = Estado,
+                    Disponibilidad = Disponibilidad,
+                    IdSeccion = IdSeccion
+                };
+                var jsonString = JsonConvert.SerializeObject(libro,
+                    new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                await client.PutAsync($"https://localhost:7053/edit-libro/{SelectedLibro.IdLibro}", content);
+                Titulo = string.Empty;
+                Sinopsis = string.Empty;
+                PuntajeCritica = 0;
+                Estado = 0;
+                Disponibilidad = false;
+                IdSeccion = 0;
+                LoadLibros();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al editar el libro: {ex.Message}");
             }
         }
+
+        private bool CanEditLibro()
+        {
+            return SelectedLibro != null;
+        }
+
+        private async void DeleteLibro()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                await client.DeleteAsync($"https://localhost:7053/delete-libro/{SelectedLibro.IdLibro}");
+                LoadLibros();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al eliminar el libro: {ex.Message}");
+            }
+        }
+
+        private bool CanDeleteLibro()
+        {
+            return SelectedLibro != null;
+        }
+
+        private async void LoadLibros()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("https://localhost:7053/api/Libros");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    Libros = JsonConvert.DeserializeObject<ObservableCollection<Libro>>(jsonString);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al cargar los libros: {ex.Message}");
+            }
+        }
+
+
     }
 
     public class RelayCommand : ICommand
