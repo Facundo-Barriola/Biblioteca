@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VistasBiblioteca.ViewModels;
 
 namespace VistasBiblioteca.Views
 {
@@ -23,6 +24,7 @@ namespace VistasBiblioteca.Views
         public UbicacionLibro()
         {
             InitializeComponent();
+            this.DataContext = new UbicacionLibroViewModel();
         }
     }
 }
