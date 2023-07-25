@@ -21,15 +21,23 @@ namespace VistasBiblioteca
 {
     public partial class MenuLibros : Page
     {
+        private MenuLibrosViewModel viewModel;
         public MenuLibros()
         {
             InitializeComponent();
+            viewModel = new MenuLibrosViewModel();
             //los datos de MenuLibros se obtienen de MenuLibrosViewModel
             this.DataContext = new MenuLibrosViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // Abre el formulario para agregar un nuevo libro
+            AgregarLibroForm agregarLibroForm = new AgregarLibroForm(viewModel);
+            agregarLibroForm.ShowDialog();
+
+            // Actualiza la lista de libros después de la creación
+            viewModel.LoadLibros();
         }
     }
 }
