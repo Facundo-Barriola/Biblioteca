@@ -26,7 +26,7 @@ namespace VistasBiblioteca.Views
         {
             InitializeComponent();
             this.viewModel = viewModel;
-            this.DataContext = viewModel;
+            this.DataContext = viewModel.LibroModel;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace VistasBiblioteca
             InitializeComponent();
             viewModel = new MenuLibrosViewModel();
             //los datos de MenuLibros se obtienen de MenuLibrosViewModel
-            this.DataContext = new MenuLibrosViewModel();
+            this.DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
