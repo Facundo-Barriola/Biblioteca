@@ -16,14 +16,69 @@ namespace VistasBiblioteca.ViewModels
     public class MenuLibrosViewModel : INotifyPropertyChanged
     {
 
-        private Libro _libroModel;
-        public Libro LibroModel
+        private string _libroModelTitulo;
+        public string LibroModelTitulo
         {
-            get { return _libroModel; }
+            get { return _libroModelTitulo; }
             set
             {
-                _libroModel = value;
-                OnPropertyChanged("LibroModel");
+                _libroModelTitulo = value;
+                OnPropertyChanged("LibroModelTitulo");
+            }
+        }
+
+        private string _libroModelSinopsis;
+        public string LibroModelSinopsis 
+        {
+            get { return _libroModelSinopsis; }
+            set 
+            {
+                _libroModelSinopsis = value;
+                OnPropertyChanged("LibroModelSinopsis");
+            }
+        }
+
+        private int _libroModelPuntaje;
+        public int LibroModelPuntaje 
+        {
+            get { return _libroModelPuntaje; }
+            set 
+            {
+                _libroModelPuntaje = value;
+                OnPropertyChanged("LibroModelPuntaje");
+            }
+        }
+
+        private int _libroModelEstado;
+        public int LibroModelEstado 
+        {
+            get { return _libroModelEstado; }
+            set 
+            {
+                _libroModelEstado = value;
+                OnPropertyChanged("LibroModelEstado");
+            }
+        }
+
+        private bool _libroModelDisponibilidad;
+        public bool LibroModelDisponibilidad 
+        {
+            get { return _libroModelDisponibilidad; }
+            set 
+            {
+                _libroModelDisponibilidad = value;
+                OnPropertyChanged("LibroModelDisponibilidad");
+            }
+        }
+
+        private int _libroModelIdSeccion;
+        public int LibroModelIdSeccion 
+        {
+            get { return _libroModelIdSeccion; }
+            set 
+            {
+                _libroModelIdSeccion = value;
+                OnPropertyChanged("LibroModelIdSeccion");
             }
         }
 
