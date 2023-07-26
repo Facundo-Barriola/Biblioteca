@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using VistasBiblioteca.ViewModels;
 using VistasBiblioteca.Views;
 
+
 namespace VistasBiblioteca
 {
     public partial class MenuLibros : Page
@@ -34,5 +35,6 @@ namespace VistasBiblioteca
             var form = new LibroForm();
             form.ShowDialog();
         }
+        
     }
 }
