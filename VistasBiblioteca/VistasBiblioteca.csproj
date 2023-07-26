@@ -58,15 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="Models\Libro.cs" />
-    <Compile Include="Views\AgregarLibroForm.xaml.cs">
-      <DependentUpon>AgregarLibroForm.xaml</DependentUpon>
+    <Compile Include="ViewModels\LibroFormViewModel.cs" />
+    <Compile Include="Views\LibroForm.xaml.cs">
+      <DependentUpon>LibroForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UbicacionLibro.xaml.cs">
       <DependentUpon>UbicacionLibro.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\AgregarLibroForm.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\LibroForm.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

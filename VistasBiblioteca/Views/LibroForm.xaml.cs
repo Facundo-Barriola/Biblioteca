@@ -10,20 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VistasBiblioteca.Models;
+using VistasBiblioteca.ViewModels;
 
 namespace VistasBiblioteca.Views
 {
     /// <summary>
     /// Lógica de interacción para LibroForm.xaml
     /// </summary>
-    public partial class LibroForm : Page
+    public partial class LibroForm : Window
     {
         public LibroForm()
         {
             InitializeComponent();
-            this.DataContext = new LibroForm();
+            var viewModel = new LibroFormViewModel();
+            this.DataContext = viewModel;
+        }
+
+        public LibroForm(Libro libro) 
+        {
+            InitializeComponent();
+            var viewModel = new LibroFormViewModel(libro);
+            this.DataContext = viewModel;
         }
     }
 }

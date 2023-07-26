@@ -32,3 +32,5 @@ C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca_Mar
 C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca_MarkupCompile.lref
 C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca.exe
 C:\Users\Tuvi\source\repos\MiWPF\VistasBiblioteca\obj\Debug\VistasBiblioteca.pdb
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\Views\LibroForm.g.cs
+C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\obj\Debug\Views\LibroForm.baml
