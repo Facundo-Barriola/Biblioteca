@@ -15,17 +15,6 @@ namespace VistasBiblioteca.ViewModels
 {
     public class UbicacionLibroViewModel : INotifyPropertyChanged
     {
-        private string _ubicacionLibroModel;
-
-        public string ubicacionLibroModel 
-        {
-            get { return _ubicacionLibroModel; }
-            set 
-            {
-                _ubicacionLibroModel = value;
-                OnPropertyChanged("ubicacionLibroModel");
-            }
-        }
 
         private ObservableCollection<UbicacionLibro> ubicacionLibros;
 
@@ -41,7 +30,7 @@ namespace VistasBiblioteca.ViewModels
 
         public UbicacionLibroViewModel() 
         {
-            LoadModels();
+            LoadUbicaciones();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -51,7 +40,7 @@ namespace VistasBiblioteca.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        private async void LoadModels() 
+        private async void LoadUbicaciones() 
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync("https://localhost:7053/api/Libros/ubicacion");
