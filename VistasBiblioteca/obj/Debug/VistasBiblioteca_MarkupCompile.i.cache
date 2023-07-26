@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Programación\C#\Biblioteca\Biblioteca\VistasBiblioteca\App.xaml
-4-129499885
+41695830452
 
-13-748762373
+14273496855
 14171849785
-Views\AgregarLibroForm.xaml;Views\MainWindow.xaml;Views\MenuLibros.xaml;Views\UbicacionLibro.xaml;
+Views\LibroForm.xaml;Views\MainWindow.xaml;Views\MenuLibros.xaml;Views\UbicacionLibro.xaml;
 
-False
+True
 

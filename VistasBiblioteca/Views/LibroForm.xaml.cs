@@ -11,22 +11,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using VistasBiblioteca.Models;
 using VistasBiblioteca.ViewModels;
 
 namespace VistasBiblioteca.Views
 {
     /// <summary>
-    /// Lógica de interacción para AgregarLibroForm.xaml
+    /// Lógica de interacción para LibroForm.xaml
     /// </summary>
-    public partial class AgregarLibroForm : Window
+    public partial class LibroForm : Window
     {
-        private MenuLibrosViewModel viewModel;
-
-        public AgregarLibroForm(MenuLibrosViewModel viewModel)
+        public LibroForm()
         {
             InitializeComponent();
-            this.viewModel = viewModel;
-            this.DataContext = viewModel.LibroModel;
+            var viewModel = new LibroFormViewModel();
+            this.DataContext = viewModel;
+        }
+
+        public LibroForm(Libro libro) 
+        {
+            InitializeComponent();
+            var viewModel = new LibroFormViewModel(libro);
+            this.DataContext = viewModel;
         }
     }
 }

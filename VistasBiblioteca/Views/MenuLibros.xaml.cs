@@ -17,7 +17,6 @@ using VistasBiblioteca.ViewModels;
 using VistasBiblioteca.Views;
 
 
-
 namespace VistasBiblioteca
 {
     public partial class MenuLibros : Page
@@ -31,17 +30,11 @@ namespace VistasBiblioteca
             this.DataContext = viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AbrirForm_Click(object sender, RoutedEventArgs e) 
         {
-            // Abre el formulario para agregar un nuevo libro
-            AgregarLibroForm agregarLibroForm = new AgregarLibroForm(viewModel);
-            agregarLibroForm.ShowDialog();
-
-            // Actualiza la lista de libros después de la creación
-            viewModel.LoadLibros();
+            var form = new LibroForm();
+            form.ShowDialog();
         }
-        private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
+        
     }
 }

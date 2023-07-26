@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -58,16 +58,17 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="Models\Libro.cs" />
-    <Resource Include="Views\AgregarLibroForm.xaml.cs">
-      <DependentUpon>AgregarLibroForm.xaml</DependentUpon>
-    </Resource>
+    <Compile Include="ViewModels\LibroFormViewModel.cs" />
+    <Compile Include="Views\LibroForm.xaml.cs">
+      <DependentUpon>LibroForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UbicacionLibro.xaml.cs">
       <DependentUpon>UbicacionLibro.xaml</DependentUpon>
     </Compile>
-    <Resource Include="Views\AgregarLibroForm.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\LibroForm.xaml">
       <SubType>Designer</SubType>
-    </Resource>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
