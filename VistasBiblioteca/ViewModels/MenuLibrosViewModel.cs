@@ -8,16 +8,16 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 using Newtonsoft.Json.Serialization;
-using VistasBiblioteca.Models;
 using System.Collections.Generic;
+using VistasBiblioteca.Models;
 
 namespace VistasBiblioteca.ViewModels
 {
     public class MenuLibrosViewModel : INotifyPropertyChanged
     {
 
-        private string _libroModel;
-        public string LibroModel
+        private Libro _libroModel;
+        public Libro LibroModel
         {
             get { return _libroModel; }
             set
@@ -76,23 +76,23 @@ namespace VistasBiblioteca.ViewModels
                 HttpClient client = new HttpClient();
                 var libro = new Libro
                 {
-                    Titulo = Titulo,
-                    Sinopsis = Sinopsis,
-                    PuntajeCritica = PuntajeCritica,
-                    Estado = Estado,
-                    Disponibilidad = Disponibilidad,
-                    IdSeccion = IdSeccion
+                    Titulo = LibroModel.Titulo,
+                    Sinopsis = LibroModel.Sinopsis,
+                    PuntajeCritica = LibroModel.PuntajeCritica,
+                    Estado = LibroModel.Estado,
+                    Disponibilidad = LibroModel.Disponibilidad,
+                    IdSeccion = LibroModel.IdSeccion
                 };
                 var jsonString = JsonConvert.SerializeObject(libro,
                     new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PostAsync("https://localhost:7053/add-libro", content);
-                Titulo = string.Empty;
-                Sinopsis = string.Empty;
-                PuntajeCritica = 0;
-                Estado = 0;
-                Disponibilidad = false;
-                IdSeccion = 0;
+                LibroModel.Titulo = string.Empty;
+                LibroModel.Sinopsis = string.Empty;
+                LibroModel.PuntajeCritica = 0;
+                LibroModel.Estado = 0;
+                LibroModel.Disponibilidad = false;
+                LibroModel.IdSeccion = 0;
                 LoadLibros();
             }
             catch (Exception ex)
@@ -103,7 +103,7 @@ namespace VistasBiblioteca.ViewModels
 
         private bool CanAddLibro()
         {
-            return !string.IsNullOrWhiteSpace(LibroModel);
+            return LibroModel != null;
         }
 
         private async void EditLibro()
@@ -114,23 +114,23 @@ namespace VistasBiblioteca.ViewModels
                 var libro = new Libro
                 {
                     IdLibro = SelectedLibro.IdLibro,
-                    Titulo = Titulo,
-                    Sinopsis = Sinopsis,
-                    PuntajeCritica = PuntajeCritica,
-                    Estado = Estado,
-                    Disponibilidad = Disponibilidad,
-                    IdSeccion = IdSeccion
+                    Titulo = SelectedLibro.Titulo,
+                    Sinopsis = SelectedLibro.Sinopsis,
+                    PuntajeCritica = SelectedLibro.PuntajeCritica,
+                    Estado = SelectedLibro.Estado,
+                    Disponibilidad = SelectedLibro.Disponibilidad,
+                    IdSeccion = SelectedLibro.IdSeccion
                 };
                 var jsonString = JsonConvert.SerializeObject(libro,
                     new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PutAsync($"https://localhost:7053/edit-libro/{SelectedLibro.IdLibro}", content);
-                Titulo = string.Empty;
-                Sinopsis = string.Empty;
-                PuntajeCritica = 0;
-                Estado = 0;
-                Disponibilidad = false;
-                IdSeccion = 0;
+                SelectedLibro.Titulo = string.Empty;
+                SelectedLibro.Sinopsis = string.Empty;
+                SelectedLibro.PuntajeCritica = 0;
+                SelectedLibro.Estado = 0;
+                SelectedLibro.Disponibilidad = false;
+                SelectedLibro.IdSeccion = 0;
                 LoadLibros();
             }
             catch (Exception ex)
