@@ -131,23 +131,23 @@ namespace VistasBiblioteca.ViewModels
                 HttpClient client = new HttpClient();
                 var libro = new Libro
                 {
-                    Titulo = LibroModel.Titulo,
-                    Sinopsis = LibroModel.Sinopsis,
-                    PuntajeCritica = LibroModel.PuntajeCritica,
-                    Estado = LibroModel.Estado,
-                    Disponibilidad = LibroModel.Disponibilidad,
-                    IdSeccion = LibroModel.IdSeccion
+                    Titulo = LibroModelTitulo,
+                    Sinopsis = LibroModelSinopsis,
+                    PuntajeCritica = LibroModelPuntaje,
+                    Estado = LibroModelEstado,
+                    Disponibilidad = LibroModelDisponibilidad,
+                    IdSeccion = LibroModelIdSeccion
                 };
                 var jsonString = JsonConvert.SerializeObject(libro,
                     new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 await client.PostAsync("https://localhost:7053/add-libro", content);
-                LibroModel.Titulo = string.Empty;
-                LibroModel.Sinopsis = string.Empty;
-                LibroModel.PuntajeCritica = 0;
-                LibroModel.Estado = 0;
-                LibroModel.Disponibilidad = false;
-                LibroModel.IdSeccion = 0;
+                LibroModelTitulo = string.Empty;
+                LibroModelSinopsis = string.Empty;
+                LibroModelPuntaje = 0;
+                LibroModelEstado = 0;
+                LibroModelDisponibilidad = false;
+                LibroModelIdSeccion = 0;
                 LoadLibros();
             }
             catch (Exception ex)
