@@ -14,6 +14,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VistasBiblioteca.ViewModels;
+using VistasBiblioteca.Views;
 
 
 
@@ -38,6 +39,9 @@ namespace VistasBiblioteca
 
             // Actualiza la lista de libros después de la creación
             viewModel.LoadLibros();
+        }
+        private void listView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }
