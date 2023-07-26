@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VistasBiblioteca.Models
 {
     public class Libro
-    {
+    {  
         public int IdLibro { get; set; }
 
         public string Titulo { get; set; }
@@ -21,5 +21,7 @@ namespace VistasBiblioteca.Models
         public bool Disponibilidad { get; set; }
 
         public int IdSeccion { get; set; }
+
     }
+    
 }
