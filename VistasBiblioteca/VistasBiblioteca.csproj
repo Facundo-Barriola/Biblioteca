@@ -57,6 +57,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Models\Libro.cs" />
     <Compile Include="Views\AgregarLibroForm.xaml.cs">
       <DependentUpon>AgregarLibroForm.xaml</DependentUpon>
     </Compile>
@@ -95,7 +96,6 @@
     <Compile Include="Views\MenuLibros.xaml.cs">
       <DependentUpon>MenuLibros.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Libro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
