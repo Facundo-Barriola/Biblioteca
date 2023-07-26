@@ -1,0 +1,46 @@
+﻿<Page x:Class="VistasBiblioteca.Views.LibroForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VistasBiblioteca.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LibroForm">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Titulo:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Margin="20" Text="{Binding LibroModelTitulo}"/>
+
+        <TextBlock Grid.Row="1" Text="Sinopsis:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Margin="20" Text="{Binding LibroModelSinopsis}"/>
+
+        <TextBlock Grid.Row="2" Text="Puntaje Crítica:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Margin="20" Text="{Binding LibroModelPuntaje}"/>
+
+        <TextBlock Grid.Row="3" Text="Estado:" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="3" Margin="20" ItemsSource="{Binding Estados}" SelectedItem="{Binding LibroModelEstado}" />
+
+        <TextBlock Grid.Row="4" Text="Disponibilidad:" VerticalAlignment="Center"/>
+        <CheckBox Grid.Row="4" Margin="10" IsChecked="{Binding LibroModelDisponibilidad}"/>
+
+        <TextBlock Grid.Row="5" Text="Seccion:" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="5" Margin="20" ItemsSource="{Binding Secciones}" SelectedItem="{Binding LibroModelSeccion}"/>
+
+        <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+            <Button Content="Guardar" Command="{Binding AddLibroCommand}"/>
+            <Button Content="Cancelar" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+
+    </Grid>
+</Page>
