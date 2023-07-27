@@ -29,11 +29,15 @@ namespace VistasBiblioteca.ViewModels
             SaveLibroCommand = new RelayCommand(SaveLibro, CanSaveLibro);
             CancelLibroCommand = new RelayCommand(CancelLibro, () => true);
             RequestClose += (sender, e) => CloseAction?.Invoke();
+            LoadSecciones();
         }
 
         public LibroFormViewModel(Libro libro) 
         {
             SaveLibroCommand = new RelayCommand(SaveLibro, CanSaveLibro);
+            CancelLibroCommand = new RelayCommand(CancelLibro, () => true);
+            RequestClose += (sender, e) => CloseAction?.Invoke();
+            LoadSecciones();
             SelectedLibro = libro; // Correccion a la hora de editar libro
             LibroModelTitulo = libro.Titulo;
             LibroModelSinopsis = libro.Sinopsis;
@@ -53,6 +57,18 @@ namespace VistasBiblioteca.ViewModels
                 OnPropertyChanged("Libros");
             }
         }
+
+        private ObservableCollection<Seccion> _secciones;
+        public ObservableCollection<Seccion> Secciones
+        {
+            get { return _secciones; }
+            set
+            {
+                _secciones = value;
+                OnPropertyChanged("Secciones");
+            }
+        }
+
 
         private string _libroModelTitulo;
         public string LibroModelTitulo
@@ -207,6 +223,25 @@ namespace VistasBiblioteca.ViewModels
         {
             ClearLibroData(); // Limpia los datos del formulario
             OnRequestClose(); //Pide cerrar la ventana
+        }
+
+        private async Task LoadSecciones()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("https://localhost:7053/api/Secciones");
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    var secciones = JsonConvert.DeserializeObject<List<Seccion>>(jsonString);
+                    Secciones = new ObservableCollection<Seccion>(secciones);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al cargar las secciones: {ex.Message}");
+            }
         }
 
         public class RelayCommand : ICommand
