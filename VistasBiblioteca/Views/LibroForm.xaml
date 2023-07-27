@@ -37,11 +37,11 @@
         <CheckBox Grid.Row="4" Grid.Column="1" Margin="10" IsChecked="{Binding LibroModelDisponibilidad}"/>
 
         <TextBlock Grid.Row="5" Text="Seccion:" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Margin="20" Text="{Binding LibroModelSeccion}"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" Margin="20" ItemsSource="{Binding Secciones}" SelectedValue="{Binding LibroModelSeccion}" DisplayMemberPath="DescripcionSeccion" SelectedValuePath="IdSeccion"/>
 
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
             <Button Content="Guardar" Command="{Binding SaveLibroCommand}"/>
-            <Button Content="Cancelar" Command="{Binding CancelCommand}"/>
+            <Button Content="Cancelar" Command="{Binding CancelLibroCommand}"/>
         </StackPanel>
 
     
