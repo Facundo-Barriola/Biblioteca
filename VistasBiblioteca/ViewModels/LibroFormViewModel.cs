@@ -182,6 +182,7 @@ namespace VistasBiblioteca.ViewModels
                 }
                 ClearLibroData();
                 await LoadLibros();
+                OnRequestClose();
             }
             catch (Exception ex) 
             {
