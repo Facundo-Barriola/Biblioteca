@@ -25,6 +25,7 @@ namespace VistasBiblioteca.ViewModels
         public LibroFormViewModel(Libro libro) 
         {
             SaveLibroCommand = new RelayCommand(SaveLibro, CanSaveLibro);
+            SelectedLibro = libro; // Correccion a la hora de editar libro
             LibroModelTitulo = libro.Titulo;
             LibroModelSinopsis = libro.Sinopsis;
             LibroModelPuntaje = libro.PuntajeCritica;
@@ -144,7 +145,7 @@ namespace VistasBiblioteca.ViewModels
                     await client.PostAsync("https://localhost:7053/api/Libros", content);
                 }
                 ClearLibroData();
-                LoadLibros();
+                await LoadLibros();
             }
             catch (Exception ex) 
             {
@@ -169,7 +170,7 @@ namespace VistasBiblioteca.ViewModels
         }
 
         private ObservableCollection<Libro> _loadedLibros;
-        private async void LoadLibros()
+        private async Task LoadLibros()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync("https://localhost:7053/api/Libros");
@@ -177,7 +178,7 @@ namespace VistasBiblioteca.ViewModels
             {
                 var jsonString = await response.Content.ReadAsStringAsync();
                 _loadedLibros = JsonConvert.DeserializeObject<ObservableCollection<Libro>>(jsonString);
-                Libros = JsonConvert.DeserializeObject<ObservableCollection<Libro>>(jsonString);
+                Libros = _loadedLibros; ///CORRECCION
             }
         }
         //private async void EditLibro()
