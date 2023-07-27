@@ -41,7 +41,7 @@
 
         <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
             <Button Content="Guardar" Command="{Binding SaveLibroCommand}"/>
-            <Button Content="Cancelar" Command="{Binding CancelCommand}"/>
+            <Button Content="Cancelar" Command="{Binding CancelLibroCommand}"/>
         </StackPanel>
 
     

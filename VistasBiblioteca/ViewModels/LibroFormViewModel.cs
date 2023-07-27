@@ -17,9 +17,18 @@ namespace VistasBiblioteca.ViewModels
     {
         public ICommand EditLibroCommand { get; set; }
         public ICommand SaveLibroCommand { get; set; }
+        public ICommand CancelLibroCommand { get; set; }
+        public event EventHandler RequestClose;
+        public Action CloseAction { get; set; }
+        private void OnRequestClose()
+        {
+            RequestClose?.Invoke(this, EventArgs.Empty);
+        }
         public LibroFormViewModel() 
         {
             SaveLibroCommand = new RelayCommand(SaveLibro, CanSaveLibro);
+            CancelLibroCommand = new RelayCommand(CancelLibro, () => true);
+            RequestClose += (sender, e) => CloseAction?.Invoke();
         }
 
         public LibroFormViewModel(Libro libro) 
@@ -183,80 +192,6 @@ namespace VistasBiblioteca.ViewModels
                 Libros = _loadedLibros; ///CORRECCION
             }
         }
-        //private async void EditLibro()
-        //{
-        //    try
-        //    {
-        //        HttpClient client = new HttpClient();
-        //        var libro = new Libro
-        //        {
-        //            IdLibro = SelectedLibro.IdLibro,
-        //            Titulo = SelectedLibro.Titulo,
-        //            Sinopsis = SelectedLibro.Sinopsis,
-        //            PuntajeCritica = SelectedLibro.PuntajeCritica,
-        //            Estado = SelectedLibro.Estado,
-        //            Disponibilidad = SelectedLibro.Disponibilidad,
-        //            IdSeccion = SelectedLibro.IdSeccion
-        //        };
-        //        var jsonString = JsonConvert.SerializeObject(libro,
-        //            new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-        //        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-        //        await client.PutAsync($"https://localhost:7053/api/Libros/{SelectedLibro.IdLibro}", content);
-        //        SelectedLibro.Titulo = string.Empty;
-        //        SelectedLibro.Sinopsis = string.Empty;
-        //        SelectedLibro.PuntajeCritica = 0;
-        //        SelectedLibro.Estado = 0;
-        //        SelectedLibro.Disponibilidad = false;
-        //        SelectedLibro.IdSeccion = 0;
-        //        //LoadLibros();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error al editar el libro: {ex.Message}");
-        //    }
-        //}
-
-        //private bool CanEditLibro()
-        //{
-        //    return SelectedLibro != null;
-        //}
-
-        //private async void AddLibro()
-        //{
-        //    try
-        //    {
-        //        HttpClient client = new HttpClient();
-        //        var libro = new Libro
-        //        {
-        //            Titulo = LibroModelTitulo,
-        //            Sinopsis = LibroModelSinopsis,
-        //            PuntajeCritica = LibroModelPuntaje,
-        //            Estado = LibroModelEstado,
-        //            Disponibilidad = LibroModelDisponibilidad,
-        //            IdSeccion = LibroModelIdSeccion
-        //        };
-        //        var jsonString = JsonConvert.SerializeObject(libro,
-        //            new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
-        //        var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-        //        await client.PostAsync("https://localhost:7053/api/Libro", content);
-        //        LibroModelTitulo = string.Empty;
-        //        LibroModelSinopsis = string.Empty;
-        //        LibroModelPuntaje = 0;
-        //        LibroModelEstado = 0;
-        //        LibroModelDisponibilidad = false;
-        //        LibroModelIdSeccion = 0;
-        //        //LoadLibros();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error al agregar el libro: {ex.Message}");
-        //    }
-        //}
-
-        //private bool CanAddLibro()
-        //{
-        //    return !string.IsNullOrEmpty(LibroModelTitulo);
-        //}
 
         private void ClearLibroData()
         {
@@ -266,6 +201,12 @@ namespace VistasBiblioteca.ViewModels
             LibroModelEstado = 0;
             LibroModelDisponibilidad = false;
             LibroModelIdSeccion = 0;
+        }
+
+        private void CancelLibro()
+        {
+            ClearLibroData(); // Limpia los datos del formulario
+            OnRequestClose(); //Pide cerrar la ventana
         }
 
         public class RelayCommand : ICommand

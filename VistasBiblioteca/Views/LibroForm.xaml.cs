@@ -16,15 +16,13 @@ using VistasBiblioteca.ViewModels;
 
 namespace VistasBiblioteca.Views
 {
-    /// <summary>
-    /// Lógica de interacción para LibroForm.xaml
-    /// </summary>
     public partial class LibroForm : Window
     {
         public LibroForm()
         {
             InitializeComponent();
             var viewModel = new LibroFormViewModel();
+            viewModel.CloseAction = Close;
             this.DataContext = viewModel;
         }
 
@@ -32,6 +30,7 @@ namespace VistasBiblioteca.Views
         {
             InitializeComponent();
             var viewModel = new LibroFormViewModel(libro);
+            viewModel.CloseAction = Close;
             this.DataContext = viewModel;
         }
     }
