@@ -87,6 +87,10 @@ namespace VistasBiblioteca.ViewModels
             if (SelectedLibro != null) 
             {
                 var form = new LibroForm(SelectedLibro);
+                form.Closed += (s, eventArgs) =>
+                {
+                    LoadLibros();
+                };
                 form.ShowDialog();
             }
         }
