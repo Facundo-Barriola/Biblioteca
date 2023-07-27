@@ -7,16 +7,23 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UbicacionLibro">
-    <ListView Name="listView"  Grid.Row="1" ItemsSource="{Binding UbicacionLibros}">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="Titulo" DisplayMemberBinding="{Binding Titulo}"/>
-                <GridViewColumn Header="Salon" DisplayMemberBinding="{Binding DescripcionSalon}"/>
-                <GridViewColumn Header="Estanteria" DisplayMemberBinding="{Binding DescripcionEstanteria}"/>
-                <GridViewColumn Header="Estante" DisplayMemberBinding="{Binding DescripcionEstante}"/>
-                <GridViewColumn Header="Seccion" DisplayMemberBinding="{Binding DescripcionSeccion}"/>
-            </GridView>
-        </ListView.View>
-    </ListView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Width="150" HorizontalAlignment="Right" Content="Actualizar" Command="{Binding LoadLibrosCommand}" />
+        <ListView Name="listView"  Grid.Row="1" ItemsSource="{Binding UbicacionLibros}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Titulo" DisplayMemberBinding="{Binding Titulo}"/>
+                    <GridViewColumn Header="Salon" DisplayMemberBinding="{Binding DescripcionSalon}"/>
+                    <GridViewColumn Header="Estanteria" DisplayMemberBinding="{Binding DescripcionEstanteria}"/>
+                    <GridViewColumn Header="Estante" DisplayMemberBinding="{Binding DescripcionEstante}"/>
+                    <GridViewColumn Header="Seccion" DisplayMemberBinding="{Binding DescripcionSeccion}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
 
 </Page>
