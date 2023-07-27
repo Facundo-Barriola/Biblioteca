@@ -54,7 +54,7 @@ namespace VistasBiblioteca.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
-        private async void LoadLibros()
+        public async void LoadLibros()
         {
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync("https://localhost:7053/api/Libros");

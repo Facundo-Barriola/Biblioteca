@@ -33,6 +33,17 @@ namespace VistasBiblioteca.ViewModels
             LibroModelDisponibilidad = libro.Disponibilidad;
             LibroModelIdSeccion = libro.IdSeccion;
         }
+        
+        private ObservableCollection<Libro> libros;
+        public ObservableCollection<Libro> Libros
+        {
+            get { return libros; }
+            set
+            {
+                libros = value;
+                OnPropertyChanged("Libros");
+            }
+        }
 
         private string _libroModelTitulo;
         public string LibroModelTitulo
@@ -158,16 +169,7 @@ namespace VistasBiblioteca.ViewModels
             return !string.IsNullOrEmpty(LibroModelTitulo);
         }
 
-        private ObservableCollection<Libro> libros;
-        public ObservableCollection<Libro> Libros
-        {
-            get { return libros; }
-            set
-            {
-                libros = value;
-                OnPropertyChanged("Libros");
-            }
-        }
+
 
         private ObservableCollection<Libro> _loadedLibros;
         private async Task LoadLibros()

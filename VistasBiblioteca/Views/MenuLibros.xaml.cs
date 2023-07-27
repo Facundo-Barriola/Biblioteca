@@ -33,6 +33,10 @@ namespace VistasBiblioteca
         private void AbrirForm_Click(object sender, RoutedEventArgs e) 
         {
             var form = new LibroForm();
+            form.Closed += (s, eventArgs) =>
+            {
+                viewModel.LoadLibros();
+            };
             form.ShowDialog();
         }
         
